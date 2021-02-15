@@ -17,6 +17,10 @@ The following features have been added:
         - seach moved to ctrl+f
         - main mod key moved from Mod1 to ctrl
         - check browser.c for a complete list
+        
+What follows is the original Lariza README
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 A simple web browser using GTK+ 3, GLib and WebKit2GTK+.
 
