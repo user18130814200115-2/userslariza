@@ -9,6 +9,14 @@
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
+This is a fork of the [lariza browser](https://uninformativ.de/git/lariza).
+The following features have been added:
+    - Javascript is off by default
+    - Keybindings to enable- (ctl+j) and disable-javascript (ctrl+h)
+    - Other keybindings have been changed to be more familiar
+        - seach moved to ctrl+f
+        - main mod key moved from Mod1 to ctrl
+        - check browser.c for a complete list
 
 A simple web browser using GTK+ 3, GLib and WebKit2GTK+.
 
