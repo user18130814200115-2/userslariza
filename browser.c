@@ -931,6 +931,14 @@ key_common(GtkWidget *widget, GdkEvent *event, gpointer data)
                 case GDK_KEY_6:  /* go one tab to the right (left hand) */
                     gtk_notebook_next_page(GTK_NOTEBOOK(mw.notebook));
                     return TRUE;
+
+		case GDK_KEY_equal:
+			webkit_web_view_set_zoom_level(WEBKIT_WEB_VIEW(c->web_view), webkit_web_view_get_zoom_level(WEBKIT_WEB_VIEW(c->web_view))+0.1);
+			return TRUE;
+		case GDK_KEY_minus:
+			webkit_web_view_set_zoom_level(WEBKIT_WEB_VIEW(c->web_view), webkit_web_view_get_zoom_level(WEBKIT_WEB_VIEW(c->web_view))-0.1);
+			return TRUE;
+
             }
         }
         /* navigate backward (left hand) */
