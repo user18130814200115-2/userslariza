@@ -938,6 +938,10 @@ key_common(GtkWidget *widget, GdkEvent *event, gpointer data)
 		case GDK_KEY_minus:
 			webkit_web_view_set_zoom_level(WEBKIT_WEB_VIEW(c->web_view), webkit_web_view_get_zoom_level(WEBKIT_WEB_VIEW(c->web_view))-0.1);
 			return TRUE;
+		case GDK_KEY_0:
+			webkit_web_view_set_zoom_level(WEBKIT_WEB_VIEW(c->web_view), 1);
+			return TRUE;
+
 
             }
         }
