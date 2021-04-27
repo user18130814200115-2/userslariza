@@ -22,7 +22,7 @@ The following features have been added:
       - This can be any program you like written in any language you like. EG:
       ```
          #!/bin/sh
-         tac "$LARIZA_HISTORY_FILE" | dmenu | lariza
+         tac "$LARIZA_HISTORY_FILE" | dmenu | xargs lariza
       ```
 What follows is the original Lariza README
 
