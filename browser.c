@@ -234,7 +234,7 @@ client_new(const gchar *uri, WebKitWebView *related_wv, gboolean show,
      * Needed because the evbox/label is "internal" to the notebook and
      * not part of the normal "widget tree" (IIUC). */
     gtk_widget_show_all(evbox);
-	webkit_settings_set_enable_javascript(webkit_web_view_get_settings(WEBKIT_WEB_VIEW(c->web_view)), FALSE);
+    //webkit_settings_set_enable_javascript(webkit_web_view_get_settings(WEBKIT_WEB_VIEW(c->web_view)), FALSE);
 	
     gtk_notebook_insert_page(GTK_NOTEBOOK(mw.notebook), c->vbox, evbox,
                              gtk_notebook_get_current_page(GTK_NOTEBOOK(mw.notebook)) + 1);
@@ -899,16 +899,16 @@ key_common(GtkWidget *widget, GdkEvent *event, gpointer data)
                 case GDK_KEY_n:  /* search forward (maybe both hands) */
                     search(c, 1);
                     return TRUE;
-		case GDK_KEY_h:
-		    webkit_settings_set_enable_javascript(webkit_web_view_get_settings(WEBKIT_WEB_VIEW(c->web_view)), FALSE);
-			webkit_web_view_reload_bypass_cache(WEBKIT_WEB_VIEW(
-                                                        c->web_view));
-		    return TRUE;
 		case GDK_KEY_j:
+		    webkit_settings_set_enable_javascript(webkit_web_view_get_settings(WEBKIT_WEB_VIEW(c->web_view)), FALSE);
+		    webkit_web_view_reload_bypass_cache(WEBKIT_WEB_VIEW(c->web_view));
+		    return TRUE;
+		case GDK_KEY_J:
 		    webkit_settings_set_enable_javascript(webkit_web_view_get_settings(WEBKIT_WEB_VIEW(c->web_view)), TRUE);
-			webkit_web_view_reload_bypass_cache(WEBKIT_WEB_VIEW(
-                                                        c->web_view));
- 
+		    webkit_web_view_reload_bypass_cache(WEBKIT_WEB_VIEW(c->web_view));
+		    return TRUE;
+		case GDK_KEY_h:
+		    system("larizahistory"); 
 		    return TRUE;
                 case GDK_KEY_3:  /* search backward (left hand) */
 		case GDK_KEY_m:
