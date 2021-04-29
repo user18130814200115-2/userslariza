@@ -24,6 +24,9 @@ The following features have been added:
          #!/bin/sh
          tac "$LARIZA_HISTORY_FILE" | dmenu | xargs lariza
       ```
+    - Brought back larizaexternalhandler
+      - This is a language agnostic program that is called on Ctrl+Shift+o by default.
+      - The programm will be called like so `larizaexternalhandler $VURRENT_URL`
 What follows is the original Lariza README
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
