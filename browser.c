@@ -868,6 +868,7 @@ key_common(GtkWidget *widget, GdkEvent *event, gpointer data)
     struct Client *c = (struct Client *)data;
     WebKitWebContext *wc = webkit_web_view_get_context(WEBKIT_WEB_VIEW(c->web_view));
     gchar *f;
+    const gchar *t;
 
     if (event->type == GDK_KEY_PRESS)
     {
@@ -940,6 +941,12 @@ key_common(GtkWidget *widget, GdkEvent *event, gpointer data)
 			return TRUE;
 		case GDK_KEY_0:
 			webkit_web_view_set_zoom_level(WEBKIT_WEB_VIEW(c->web_view), 1);
+			return TRUE;
+		case GDK_KEY_O:
+			t = gtk_entry_get_text(GTK_ENTRY(c->location));
+			char buf[100];
+			sprintf(buf, "larizaexternalhandler %s", t);
+			system(buf);
 			return TRUE;
 
 
