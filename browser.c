@@ -909,7 +909,7 @@ key_common(GtkWidget *widget, GdkEvent *event, gpointer data)
 		    webkit_web_view_reload_bypass_cache(WEBKIT_WEB_VIEW(c->web_view));
 		    return TRUE;
 		case GDK_KEY_h:
-		    system("larizahistory"); 
+		    system("larizahistory &"); 
 		    return TRUE;
                 case GDK_KEY_3:  /* search backward (left hand) */
 		case GDK_KEY_m:
@@ -945,9 +945,12 @@ key_common(GtkWidget *widget, GdkEvent *event, gpointer data)
 		case GDK_KEY_O:
 			t = gtk_entry_get_text(GTK_ENTRY(c->location));
 			char buf[100];
-			sprintf(buf, "larizaexternalhandler %s", t);
+			sprintf(buf, "larizaexternalhandler %s &", t);
 			system(buf);
 			return TRUE;
+		case GDK_KEY_N:
+		    system("lariza -C &");
+		    return TRUE;
 
 
             }

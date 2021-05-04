@@ -14,6 +14,7 @@ datarootdir = $(prefix)/share
 mandir = $(datarootdir)/man
 man1dir = $(mandir)/man1
 datadir = $(prefix)/share
+appdir = /usr/share/applications
 
 
 .PHONY: all clean install installdirs
@@ -43,6 +44,7 @@ install: all installdirs
 		$(DESTDIR)$(libdir)/$(__NAME__)/web_extensions/we_adblock.so
 	$(INSTALL_DATA) user-scripts/hints.js \
 		$(DESTDIR)$(datadir)/$(__NAME__)/user-scripts/hints.js
+	$(INSTALL_DATA) $(__NAME__).desktop $(appdir)/$(__NAME__).desktop
 
 installdirs:
 	mkdir -p $(DESTDIR)$(bindir) $(DESTDIR)$(man1dir) \
