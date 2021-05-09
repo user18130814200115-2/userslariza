@@ -44,12 +44,15 @@ install: all installdirs
 		$(DESTDIR)$(libdir)/$(__NAME__)/web_extensions/we_adblock.so
 	$(INSTALL_DATA) user-scripts/hints.js \
 		$(DESTDIR)$(datadir)/$(__NAME__)/user-scripts/hints.js
-	$(INSTALL_DATA) $(__NAME__).desktop $(appdir)/$(__NAME__).desktop
+	$(INSTALL_DATA) $(__NAME__).desktop\
+	    $(DESTDIR)$(appdir)/$(__NAME__).desktop
 
 installdirs:
 	mkdir -p $(DESTDIR)$(bindir) $(DESTDIR)$(man1dir) \
 		$(DESTDIR)$(libdir)/$(__NAME__)/web_extensions \
-		$(DESTDIR)$(datadir)/$(__NAME__)/user-scripts
+		$(DESTDIR)$(datadir)/$(__NAME__)/user-scripts \
+		$(DESTDIR)$(appdir)
+
 
 clean:
 	rm -f $(__NAME__) we_adblock.so
