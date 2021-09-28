@@ -1,8 +1,11 @@
+```
    _            _
   | | __ _ _ __(_)______ _
   | |/ _` | '__| |_  / _` |
   | | (_| | |  | |/ / (_| |
   |_|\__,_|_|  |_/___\__,_|
+```  
+ 
   https://uninformativ.de/git/lariza
   https://uninformativ.de/bugs.html
 
@@ -11,44 +14,47 @@
 
 This is a fork of the [lariza browser](https://uninformativ.de/git/lariza).
 The following features have been added:
-    - Keybindings to disable- (ctl+j) and re-enable-javascript (ctrl+shift+j)
-    - Keybindings added for zooming in and out (ctrl+=) (ctrl+-)
-    - Other keybindings have been changed to be more familiar
-        - seach moved to ctrl+f
-        - main mod key moved from Mod1 to ctrl
-        - check browser.c for a complete list
-    - Keybinding to manage history with external program (ctrl+h)
-      - Pressing this keybinding will load larizahistory from your PATH
-      - This can be any program you like written in any language you like. EG:
-      ```
-         #!/bin/sh
-         tac "$LARIZA_HISTORY_FILE" | dmenu | xargs lariza
-      ```
-    - Brought back larizaexternalhandler
-      - This is a language agnostic program that is called on Ctrl+Shift+o by default.
-      - The programm will be called like so `larizaexternalhandler $VURRENT_URL`
-    - Open a new seperate instance with `ctrl+shift+n`
-    - a lariza.desktop file is automatically installed on `make install`
-What follows is the original Lariza README
 
+- Keybindings to disable- (ctl+j) and re-enable-javascript (ctrl+shift+j)
+- Keybindings added for zooming in and out (ctrl+=) (ctrl+-)
+  + Keybind to reset zoom (ctrl+0)
+- Other keybindings have been changed to be more familiar
+    - seach moved to ctrl+f
+    - main mod key moved from Mod1 to ctrl
+- Keybinding to manage history with external program (ctrl+h)
+  - Pressing this keybinding will load larizahistory from your PATH
+  - This can be any program you like written in any language you like. EG:
+  ```
+     #!/bin/sh
+     tac "$LARIZA_HISTORY_FILE" | dmenu | xargs lariza
+  ```
+- Brought back larizaexternalhandler
+  - This is a language agnostic program that is called on Ctrl+Shift+o by default.
+  - The programm will be called like so `larizaexternalhandler $VURRENT_URL`
+- a lariza.desktop file is automatically installed on `make install`
+- Keys for previous/next tab remapped to (ctrl+Left) (ctrl+right)
+- Dedicated keys to get to a certain tab on (ctrl+`n`) where `n` is a number key
+    
+    
+What follows is the original Lariza README
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 A simple web browser using GTK+ 3, GLib and WebKit2GTK+.
 
 Features:
 
-    - A WebKit2 viewport
-    - An input box to change the URI or to search the current page
-    - Built-in download manager
-    - Indicator for web feeds
-    - Optimized hotkeys: Left hand on keyboard, right hand on mouse
-    - Global content zoom
-    - Cooperative instances using FIFOs
-    - Certificate trust store
-    - Bundled user-supplied JavaScripts (optional):
-        - Link hints
-    - Bundled web extensions (optional):
-        - Adblock
+- A WebKit2 viewport
+- An input box to change the URI or to search the current page
+- Built-in download manager
+- Indicator for web feeds
+- Optimized hotkeys: Left hand on keyboard, right hand on mouse
+- Global content zoom
+- Cooperative instances using FIFOs
+- Certificate trust store
+- Bundled user-supplied JavaScripts (optional):
+    - Link hints
+- Bundled web extensions (optional):
+    - Adblock
 
 
 Installation
@@ -56,8 +62,8 @@ Installation
 
 The following C libraries are required:
 
-    - GTK+ 3
-    - WebKit2 API for GTK+ 3
+- GTK+ 3
+- WebKit2 API for GTK+ 3
 
 lariza expects to be run on a POSIX-ish operating system.
 
