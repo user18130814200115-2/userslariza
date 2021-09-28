@@ -896,7 +896,6 @@ key_common(GtkWidget *widget, GdkEvent *event, gpointer data)
                 case GDK_KEY_d:  /* download manager (left hand) */
                     gtk_widget_show_all(dm.win);
                     return TRUE;
-                case GDK_KEY_2:  /* search forward (left hand) */
                 case GDK_KEY_n:  /* search forward (maybe both hands) */
                     search(c, 1);
                     return TRUE;
@@ -911,7 +910,6 @@ key_common(GtkWidget *widget, GdkEvent *event, gpointer data)
 		case GDK_KEY_h:
 		    system("larizahistory &"); 
 		    return TRUE;
-                case GDK_KEY_3:  /* search backward (left hand) */
 		case GDK_KEY_m:
                     search(c, -1);
                     return TRUE;
@@ -926,10 +924,10 @@ key_common(GtkWidget *widget, GdkEvent *event, gpointer data)
                 case GDK_KEY_o:  /* reload trusted certs (left hand) */
                     trust_user_certs(wc);
                     return TRUE;
-                case GDK_KEY_5:  /* go one tab to the left (left hand) */
+                case GDK_KEY_Left:  /* go one tab to the left (left hand) */
                     gtk_notebook_prev_page(GTK_NOTEBOOK(mw.notebook));
                     return TRUE;
-                case GDK_KEY_6:  /* go one tab to the right (left hand) */
+                case GDK_KEY_Right:  /* go one tab to the right (left hand) */
                     gtk_notebook_next_page(GTK_NOTEBOOK(mw.notebook));
                     return TRUE;
 
@@ -944,15 +942,37 @@ key_common(GtkWidget *widget, GdkEvent *event, gpointer data)
 			return TRUE;
 		case GDK_KEY_O:
 			t = gtk_entry_get_text(GTK_ENTRY(c->location));
-			char buf[100];
+			char buf[2000];
 			sprintf(buf, "larizaexternalhandler %s &", t);
 			system(buf);
 			return TRUE;
-		case GDK_KEY_N:
-		    system("lariza -C &");
+		case GDK_KEY_1:
+		    gtk_notebook_set_current_page(GTK_NOTEBOOK(mw.notebook), 0);
 		    return TRUE;
-
-
+		case GDK_KEY_2:
+		    gtk_notebook_set_current_page(GTK_NOTEBOOK(mw.notebook), 1);
+		    return TRUE;
+		case GDK_KEY_3:
+		    gtk_notebook_set_current_page(GTK_NOTEBOOK(mw.notebook), 2);
+		    return TRUE;
+		case GDK_KEY_4:
+		    gtk_notebook_set_current_page(GTK_NOTEBOOK(mw.notebook), 3);
+		    return TRUE;
+		case GDK_KEY_5:
+		    gtk_notebook_set_current_page(GTK_NOTEBOOK(mw.notebook), 4);
+		    return TRUE;
+		case GDK_KEY_6:
+		    gtk_notebook_set_current_page(GTK_NOTEBOOK(mw.notebook), 5);
+		    return TRUE;
+		case GDK_KEY_7:
+		    gtk_notebook_set_current_page(GTK_NOTEBOOK(mw.notebook), 6);
+		    return TRUE;
+		case GDK_KEY_8:
+		    gtk_notebook_set_current_page(GTK_NOTEBOOK(mw.notebook), 7);
+		    return TRUE;
+		case GDK_KEY_9:
+		    gtk_notebook_set_current_page(GTK_NOTEBOOK(mw.notebook), 8);
+		    return TRUE;
             }
         }
         /* navigate backward (left hand) */
