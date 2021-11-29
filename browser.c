@@ -644,7 +644,7 @@ ensure_uri_scheme(const gchar *t)
             free(fabs);
         }
         else
-            f = g_strdup_printf("https://wester.digital/html/?q=%s", t);
+            f = g_strdup_printf("https://duckduckgo.com/html?q=%s", t);
         return f;
     }
     else
