@@ -24,10 +24,7 @@ The following features have been added:
 - Keybinding to manage history with external program (ctrl+h)
   - Pressing this keybinding will load `larizahistory` from your PATH
   - This can be any program you like written in any language you like. EG:
-  ```
-     #!/bin/sh
-     tac "$LARIZA_HISTORY_FILE" | dmenu | xargs lariza
-  ```
+- Keybind for `larizabookmarks` external program simmilar to `larizahistory`, may be integrated with `larizaexternalhandler`
 - Brought back `larizaexternalhandler`
   - This is a language agnostic program that is called on Ctrl+Shift+o by default.
   - The programm will be called like so `larizaexternalhandler $CURRENT_URL` to open the url currently displayed in the url bar with an external program
@@ -37,8 +34,40 @@ The following features have been added:
 - Search duckduckgo if the url input starts with `q=`
    - EG typing `q=test` into the urlbar will lead to `https://duckduckgo.com/html?q=test`
 - default to `https` over `http`
-    
-    
+
+
+## Examples of external program use
+A basic larizahistory is posix shell might look like
+```
+     #!/bin/sh
+     tac "$LARIZA_HISTORY_FILE" | dmenu | xargs lariza
+```
+Simmilarly, `larizabookmarks`
+```
+     #!/bin/sh
+     cat "$HOME/.cache/lariza/bookmarks" | dmenu | xargs lariza
+```
+The file bookmarks contains a list of links,
+because it is an extrenal program with can make this as complex as you like.
+You can even give the bookmarks names and output the coresponding url into lariza.
+
+`larizaexpernalhander` works a bit different,
+it recieves the current url as $1, so you might use
+```
+   #!/bin/sh
+   firefox $1
+```
+to open the link in firefox, thouhg you probably want to make a selection menu with something like dmenu
+```
+   #!/bin/sh
+   echo "firefox\nvhromium\nmpv\nyoutube-dl" | dmenu | xargs lariza $1
+```
+
+For each of these examples, one should remember that the scripts are just that, **examples**.
+Primarily, they do not check if the user actually selects anything,
+thus always opening a new tab on lariza even if no bookmark or history-url was selected.
+
+
 What follows is the original Lariza README
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
