@@ -1,5 +1,6 @@
 #!/bin/sh
 
+# List of aplications, most of these are custom scrips
 applications="\
 yt2mpv
 pdf
@@ -11,8 +12,13 @@ ex-audio
 chromium
 "
 
+# Allow the user to select the wanted program via a dmenu-like menu, mine is called launcher
 application=$(printf "$applications" | launcher)
 
+# Put the url into the historyfile, this is a personal preference
 echo "$1" >> "$LARIZA_HISTORY_FILE"
 
+# Check if we have selected anything and then open the url in the given application
+# NOTE, I use the river wayland compositor, and as such use riverctl spawn to get the programs to spawn independently of the lariza process.
+# Most window manager offer this functionality, though you could also do it with & and disown
 [ -z $application ] || riverctl spawn "$application $1"
