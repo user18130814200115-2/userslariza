@@ -22,19 +22,19 @@ The following features have been added:
     - seach moved to ctrl+f
     - main mod key moved from Mod1 to ctrl
 - Keybinding to manage history with external program (ctrl+h)
-  - Pressing this keybinding will load larizahistory from your PATH
+  - Pressing this keybinding will load `larizahistory` from your PATH
   - This can be any program you like written in any language you like. EG:
   ```
      #!/bin/sh
      tac "$LARIZA_HISTORY_FILE" | dmenu | xargs lariza
   ```
-- Brought back larizaexternalhandler
+- Brought back `larizaexternalhandler`
   - This is a language agnostic program that is called on Ctrl+Shift+o by default.
-  - The programm will be called like so `larizaexternalhandler $VURRENT_URL`
+  - The programm will be called like so `larizaexternalhandler $CURRENT_URL` to open the url currently displayed in the url bar with an external program
 - a lariza.desktop file is automatically installed on `make install`
-- Keys for previous/next tab remapped to (ctrl+Left) (ctrl+right)
+- Keys for previous/next tab remapped to (ctrl+Left) (ctrl+Right)
 - Dedicated keys to get to a certain tab on (ctrl+`n`) where `n` is a number key
-- Search duckduckgo if the urlbar starts with `q=`
+- Search duckduckgo if the url input starts with `q=`
    - EG typing `q=test` into the urlbar will lead to `https://duckduckgo.com/html?q=test`
 - default to `https` over `http`
     
