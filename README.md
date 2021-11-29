@@ -42,22 +42,22 @@ A basic larizahistory is posix shell might look like
      #!/bin/sh
      tac "$LARIZA_HISTORY_FILE" | dmenu | xargs lariza
 ```
-Simmilarly, `larizabookmarks`
+Similarly, `larizabookmarks`
 ```
      #!/bin/sh
      cat "$HOME/.cache/lariza/bookmarks" | dmenu | xargs lariza
 ```
-The file bookmarks contains a list of links,
-because it is an extrenal program with can make this as complex as you like.
-You can even give the bookmarks names and output the coresponding url into lariza.
+The file "bookmarks" contains a list of links,
+because it is an external program, you can make this as complex as you like.
+You can even give the bookmarks names and output the corresponding url into lariza.
 
 `larizaexternalhander` works a bit different,
-it recieves the current url as $1, so you might use
+it receives the current url as $1, so you might use
 ```
    #!/bin/sh
    firefox $1
 ```
-to open the link in firefox, thouhg you probably want to make a selection menu with something like dmenu
+to open the link in firefox, though you probably want to make a selection menu with something like dmenu
 ```
    #!/bin/sh
    echo "firefox\nvhromium\nmpv\nyoutube-dl" | dmenu | xargs lariza $1
@@ -66,6 +66,8 @@ to open the link in firefox, thouhg you probably want to make a selection menu w
 For each of these examples, one should remember that the scripts are just that, **examples**.
 Primarily, they do not check if the user actually selects anything,
 thus always opening a new tab on lariza even if no bookmark or history-url was selected.
+
+
 
 
 What follows is the original Lariza README
