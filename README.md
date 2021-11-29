@@ -51,7 +51,7 @@ The file bookmarks contains a list of links,
 because it is an extrenal program with can make this as complex as you like.
 You can even give the bookmarks names and output the coresponding url into lariza.
 
-`larizaexpernalhander` works a bit different,
+`larizaexternalhander` works a bit different,
 it recieves the current url as $1, so you might use
 ```
    #!/bin/sh
