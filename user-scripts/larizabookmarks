@@ -1,0 +1,5 @@
+#!/bin/sh
+
+url=$(sed -e "s|^$LARIZA_HOME_URI$||g" -e 's|^[a-z]*://||g' -e '/^$/d' "$HOME/.cache/lariza/bookmarks" | launcher)
+
+[ -z $url ] || lariza "https://$url"

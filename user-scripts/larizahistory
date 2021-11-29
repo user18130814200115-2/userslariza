@@ -1,0 +1,5 @@
+#!/bin/sh
+
+url=$(grep "http" "$LARIZA_HISTORY_FILE" | sed -e "s|^$LARIZA_HOME_URI$||g" -e 's|^[a-z]*://||g' -e '/^$/d'  | uniq | tail -n 300 | tac | launcher "796x456" )
+
+[ -n "$url" ] && lariza "https://$url"

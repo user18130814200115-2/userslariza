@@ -1,0 +1,18 @@
+#!/bin/sh
+
+applications="\
+yt2mpv
+pdf
+firefox
+bookmark
+youtube-dl
+deemix
+ex-audio
+chromium
+"
+
+application=$(printf "$applications" | launcher)
+
+echo "$1" >> "$LARIZA_HISTORY_FILE"
+
+[ -z $application ] || riverctl spawn "$application $1"
