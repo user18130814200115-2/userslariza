@@ -1,3 +1,4 @@
+#include <limits.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <sys/types.h>
@@ -633,6 +634,7 @@ ensure_uri_scheme(const gchar *t)
         !g_str_has_prefix(f, "file:") &&
         !g_str_has_prefix(f, "about:") &&
         !g_str_has_prefix(f, "data:") &&
+        !g_str_has_prefix(f, "q=") &&
         !g_str_has_prefix(f, "webkit:"))
     {
         g_free(f);
@@ -643,11 +645,18 @@ ensure_uri_scheme(const gchar *t)
             free(fabs);
         }
         else
-            f = g_strdup_printf("https://duckduckgo.com/html?q=%s", t);
+            f = g_strdup_printf("https://%s", t);
         return f;
     }
     else
+    {
+	if (g_str_has_prefix(f, "q="))
+	{
+	    f = g_strdup_printf("https://duckduckgo.com/html/?%s", t);
+	    return f;
+	}
         return g_strdup(t);
+    }
 }
 
 void
