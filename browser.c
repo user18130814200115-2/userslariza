@@ -915,6 +915,9 @@ key_common(GtkWidget *widget, GdkEvent *event, gpointer data)
 		    webkit_settings_set_enable_javascript(webkit_web_view_get_settings(WEBKIT_WEB_VIEW(c->web_view)), TRUE);
 		    webkit_web_view_reload_bypass_cache(WEBKIT_WEB_VIEW(c->web_view));
 		    return TRUE;
+		case GDK_KEY_b:
+		    system("larizabookmarks &"); 
+		    return TRUE;
 		case GDK_KEY_h:
 		    system("larizahistory &"); 
 		    return TRUE;
