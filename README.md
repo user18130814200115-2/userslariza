@@ -67,7 +67,7 @@ For each of these examples, one should remember that the scripts are just that, 
 Primarily, they do not check if the user actually selects anything,
 thus always opening a new tab on lariza even if no bookmark or history-url was selected.
 
-
+Better examples can be found under `user-scripts/`
 
 
 What follows is the original Lariza README
