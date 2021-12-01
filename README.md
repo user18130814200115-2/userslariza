@@ -1,17 +1,4 @@
-```
-   _            _
-  | | __ _ _ __(_)______ _
-  | |/ _` | '__| |_  / _` |
-  | | (_| | |  | |/ / (_| |
-  |_|\__,_|_|  |_/___\__,_|
-```  
- 
-  https://uninformativ.de/git/lariza
-  https://uninformativ.de/bugs.html
-
-
-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
+# Lariza
 This is a fork of the [lariza browser](https://uninformativ.de/git/lariza),
 a simple webkit GTK3 browser.
 
