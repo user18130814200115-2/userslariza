@@ -12,9 +12,23 @@
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-This is a fork of the [lariza browser](https://uninformativ.de/git/lariza).
-The following features have been added:
+This is a fork of the [lariza browser](https://uninformativ.de/git/lariza),
+a simple webkit GTK3 browser.
 
+## Regular features
+- A WebKit2 viewport
+- An input box to change the URI or to search the current page
+- Built-in download manager
+- Indicator for web feeds
+- Global content zoom
+- Cooperative instances using FIFOs
+- Certificate trust store
+- Bundled user-supplied JavaScripts (optional):
+    - Link hints
+- Bundled web extensions (optional):
+    - Adblock
+
+## Added features
 - Keybindings to disable- (ctl+j) and re-enable-javascript (ctrl+shift+j)
 - Keybindings added for zooming in and out (ctrl+=) (ctrl+-)
   + Keybind to reset zoom (ctrl+0)
@@ -35,7 +49,6 @@ The following features have been added:
 - Default to `https` over `http`
 - Instead of opening up the download manager when a new download is started, send a desktop notification
    - Download manager is still accessible through the keybind  
-
 
 ## Examples of external program use
 A basic larizahistory is posix shell might look like
@@ -70,35 +83,12 @@ thus always opening a new tab on lariza even if no bookmark or history-url was s
 
 Better examples can be found under `user-scripts/`
 
-
-What follows is the original Lariza README
-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-A simple web browser using GTK+ 3, GLib and WebKit2GTK+.
-
-Features:
-
-- A WebKit2 viewport
-- An input box to change the URI or to search the current page
-- Built-in download manager
-- Indicator for web feeds
-- Optimized hotkeys: Left hand on keyboard, right hand on mouse
-- Global content zoom
-- Cooperative instances using FIFOs
-- Certificate trust store
-- Bundled user-supplied JavaScripts (optional):
-    - Link hints
-- Bundled web extensions (optional):
-    - Adblock
-
-
-Installation
-------------
-
+## Installation
 The following C libraries are required:
 
 - GTK+ 3
 - WebKit2 API for GTK+ 3
+- Libnotify
 
 lariza expects to be run on a POSIX-ish operating system.
 
@@ -111,45 +101,38 @@ To use bundled web extensions, they must be copied or symlinked to the
 appropriate path. Please refer to the manpage.
 
 
-Running
--------
-
+## Running
 You simply invoke the main program:
 
     $ lariza
 
 Refer to the manpage for all options.
 
+## Note on the manpage
+The manpage ahs not been edited for use with this fork,
+proceed with caution.
 
-Background information
-----------------------
+## Background information
+What lariza is and what it's not
+lariza does what I need. It won't do other things. I'm open for pull
+requests but please don't be upset if I turn them down -- which might
+happen if it's a feature that I simply don't need. That being said,
+you should have a look at the PATCHES file. :-)
+lariza does not compete with powerful browsers like dwb or luakit, nor
+with monstrous applications like Firefox or Chromium. 
 
- What lariza is and what it's not
+About the name
+"lariza" stems from a german sentence:
+```
+Alle anderen waren mir zu anstrengend.
+ l   a         r    i  z  a
+```
+That phrase basically means: "It was too tiresome to deal with any
+other browser." I couldn't find a simple browser that does just what I
+need. Most of them are utterly bloated, others lack essential
+functions. Thus, I was forced to write scripts and tools and stuff to
+deal with these issues. That is what was tiresome. I don't want to
+work around bugs or nonsensical behavior anymore.
+So, I wrote my own browser^W WebKit GUI. WebKit does all the dirty
+work.
 
-  lariza does what I need. It won't do other things. I'm open for pull
-  requests but please don't be upset if I turn them down -- which might
-  happen if it's a feature that I simply don't need. That being said,
-  you should have a look at the PATCHES file. :-)
-
-  lariza does not compete with powerful browsers like dwb or luakit, nor
-  with monstrous applications like Firefox or Chromium. lariza won't
-  have persistent storage, nor a plugin system, nor cloud sync, nor
-  bookmarks.
-
-
- About the name
-
-  "lariza" stems from a german sentence:
-
-      Alle anderen waren mir zu anstrengend.
-       l   a         r    i  z  a
-
-  That phrase basically means: "It was too tiresome to deal with any
-  other browser." I couldn't find a simple browser that does just what I
-  need. Most of them are utterly bloated, others lack essential
-  functions. Thus, I was forced to write scripts and tools and stuff to
-  deal with these issues. That is what was tiresome. I don't want to
-  work around bugs or nonsensical behavior anymore.
-
-  So, I wrote my own browser^W WebKit GUI. WebKit does all the dirty
-  work.
