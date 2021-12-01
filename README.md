@@ -31,8 +31,8 @@ The following features have been added:
 - a lariza.desktop file is automatically installed on `make install`
 - Keys for previous/next tab remapped to (ctrl+Left) (ctrl+Right)
 - Dedicated keys to get to a certain tab on (ctrl+`n`) where `n` is a number key
-- Search duckduckgo if the url input starts with `q=`
-   - EG typing `q=test` into the urlbar will lead to `https://duckduckgo.com/html?q=test`
+- Search duckduckgo if the url input does not start with a protocol and the string does not conatin a `.`
+   - EG typing `test` into the urlbar will lead to `https://duckduckgo.com/html?q=test` while `test.com` will default to `https://test.com`
 - default to `https` over `http`
 
 
