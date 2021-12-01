@@ -31,7 +31,7 @@ a simple webkit GTK3 browser.
 - A lariza.desktop file is automatically installed on `make install`
 - Keys for previous/next tab remapped to (ctrl+Left) (ctrl+Right)
 - Dedicated keys to get to a certain tab on (ctrl+`n`) where `n` is a number key
-- Search duckduckgo if the url input does not start with a protocol and the string does not conatin a `.`
+- Search duckduckgo if the url input does not start with a protocol and the string does not contain a `.`
    - EG typing `test` into the urlbar will lead to `https://duckduckgo.com/html?q=test` while `test.com` will default to `https://test.com`
 - Default to `https` over `http`
 - Instead of opening up the download manager when a new download is started, send a desktop notification
@@ -96,7 +96,7 @@ You simply invoke the main program:
 Refer to the manpage for all options.
 
 ## Note on the manpage
-The manpage ahs not been edited for use with this fork,
+The manpage has not been edited for use with this fork,
 proceed with caution.
 
 ## Background information
