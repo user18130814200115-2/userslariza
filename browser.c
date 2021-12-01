@@ -13,6 +13,9 @@
 #include <webkit2/webkit2.h>
 #include <JavaScriptCore/JavaScript.h>
 
+#include<libnotify/notify.h>
+
+NotifyNotification *download_notif;
 void client_destroy(GtkWidget *, gpointer);
 WebKitWebView *client_new(const gchar *, WebKitWebView *, gboolean,
                           gboolean);
@@ -80,7 +83,7 @@ struct DownloadManager
     GtkWidget *win;
 } dm;
 
-
+const char *icon = "epiphany-webkit";
 const gchar *accepted_language[2] = { NULL, NULL };
 gint clients = 0, downloads = 0;
 gboolean cooperative_alone = TRUE;
@@ -507,6 +510,9 @@ void
 download_handle_finished(WebKitDownload *download, gpointer data)
 {
     downloads--;
+    notify_notification_update(download_notif, "Lariza",
+	    g_strdup_printf("Download Finished\r%d still active", downloads), icon);
+    notify_notification_show(download_notif, NULL);
 }
 
 void
@@ -515,6 +521,7 @@ download_handle_start(WebKitWebView *web_view, WebKitDownload *download,
 {
     g_signal_connect(G_OBJECT(download), "decide-destination",
                      G_CALLBACK(download_handle), data);
+
 }
 
 gboolean
@@ -555,7 +562,7 @@ download_handle(WebKitDownload *download, gchar *suggested_filename, gpointer da
         gtk_tool_button_set_icon_name(GTK_TOOL_BUTTON(tb), "gtk-delete");
         gtk_tool_button_set_label(GTK_TOOL_BUTTON(tb), sug_clean);
         gtk_toolbar_insert(GTK_TOOLBAR(dm.toolbar), tb, 0);
-        gtk_widget_show_all(dm.win);
+        /*gtk_widget_show_all(dm.win);*/
 
         g_signal_connect(G_OBJECT(download), "notify::estimated-progress",
                          G_CALLBACK(changed_download_progress), tb);
@@ -568,6 +575,11 @@ download_handle(WebKitDownload *download, gchar *suggested_filename, gpointer da
         g_signal_connect(G_OBJECT(tb), "clicked",
                          G_CALLBACK(downloadmanager_cancel), download);
     }
+
+
+    notify_notification_update(download_notif, "Lariza",
+	    g_strdup_printf("Downloading %s.%d", sug_clean, suffix), icon);
+    notify_notification_show(download_notif, NULL);
 
     g_free(sug_clean);
     g_free(path);
@@ -621,6 +633,10 @@ downloadmanager_setup(void)
     gtk_container_add(GTK_CONTAINER(dm.scroll), dm.toolbar);
 
     gtk_container_add(GTK_CONTAINER(dm.win), dm.scroll);
+
+    notify_init("Lariza");
+    download_notif = notify_notification_new("Lariza", NULL, NULL);
+
 }
 
 gchar *
@@ -1161,6 +1177,7 @@ mainwindow_setup(void)
     gtk_window_set_default_size(GTK_WINDOW(mw.win), 800, 600);
     g_signal_connect(G_OBJECT(mw.win), "destroy", gtk_main_quit, NULL);
     gtk_window_set_title(GTK_WINDOW(mw.win), __NAME__);
+    gtk_window_set_decorated(GTK_WINDOW(mw.win), FALSE);
 
     mw.notebook = gtk_notebook_new();
     gtk_notebook_set_scrollable(GTK_NOTEBOOK(mw.notebook), TRUE);
