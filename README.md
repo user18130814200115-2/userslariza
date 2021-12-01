@@ -38,7 +38,7 @@ a simple webkit GTK3 browser.
    - Download manager is still accessible through the keybind  
 
 ## Examples of external program use
-A basic larizahistory is posix shell might look like
+A basic `larizahistory` in posix shell might look like
 ```
      #!/bin/sh
      tac "$LARIZA_HISTORY_FILE" | dmenu | xargs lariza
