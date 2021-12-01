@@ -19,21 +19,22 @@ The following features have been added:
 - Keybindings added for zooming in and out (ctrl+=) (ctrl+-)
   + Keybind to reset zoom (ctrl+0)
 - Other keybindings have been changed to be more familiar
-    - seach moved to ctrl+f
-    - main mod key moved from Mod1 to ctrl
+    - Search moved to ctrl+f
+    - Main mod key moved from Mod1 to ctrl
 - Keybinding to manage history with external program (ctrl+h)
   - Pressing this keybinding will load `larizahistory` from your PATH
-  - This can be any program you like written in any language you like. EG:
 - Keybind for `larizabookmarks` external program simmilar to `larizahistory`, may be integrated with `larizaexternalhandler`
 - Brought back `larizaexternalhandler`
   - This is a language agnostic program that is called on Ctrl+Shift+o by default.
-  - The programm will be called like so `larizaexternalhandler $CURRENT_URL` to open the url currently displayed in the url bar with an external program
-- a lariza.desktop file is automatically installed on `make install`
+  - The program will be called like so `larizaexternalhandler $CURRENT_URL` to open the current url in the bar with an external program
+- A lariza.desktop file is automatically installed on `make install`
 - Keys for previous/next tab remapped to (ctrl+Left) (ctrl+Right)
 - Dedicated keys to get to a certain tab on (ctrl+`n`) where `n` is a number key
 - Search duckduckgo if the url input does not start with a protocol and the string does not conatin a `.`
    - EG typing `test` into the urlbar will lead to `https://duckduckgo.com/html?q=test` while `test.com` will default to `https://test.com`
-- default to `https` over `http`
+- Default to `https` over `http`
+- Instead of opening up the download manager when a new download is started, send a desktop notification
+   - Download manager is still accessible through the keybind  
 
 
 ## Examples of external program use
