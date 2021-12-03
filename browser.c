@@ -93,6 +93,7 @@ gchar *download_dir = "/var/tmp";
 gboolean enable_console_to_stdout = FALSE;
 gchar *fifo_suffix = "main";
 gdouble global_zoom = 1.0;
+gchar *search_uri = "https://html.duckduckgo.com/html/";
 gchar *history_file = NULL;
 gchar *home_uri = "about:blank";
 gchar *search_text = NULL;
@@ -663,7 +664,7 @@ ensure_uri_scheme(const gchar *t)
 	{	
 	    if (!strstr(t, "."))
 	    {
-		f = g_strdup_printf("https://duckduckgo.com/html/?q=%s", t);
+		f = g_strdup_printf("%s?q=%s", search_uri, t);
 	    }
 	    else
 		f = g_strdup_printf("https://%s", t);
@@ -704,6 +705,10 @@ grab_environment_configuration(void)
     e = g_getenv(__NAME_UPPERCASE__"_HOME_URI");
     if (e != NULL)
         home_uri = g_strdup(e);
+
+    e = g_getenv(__NAME_UPPERCASE__"_SEARCH_URI");
+    if (e != NULL)
+        search_uri = g_strdup(e);
 
     e = g_getenv(__NAME_UPPERCASE__"_TAB_POS");
     if (e != NULL)
@@ -966,7 +971,7 @@ key_common(GtkWidget *widget, GdkEvent *event, gpointer data)
 			webkit_web_view_set_zoom_level(WEBKIT_WEB_VIEW(c->web_view), webkit_web_view_get_zoom_level(WEBKIT_WEB_VIEW(c->web_view))-0.1);
 			return TRUE;
 		case GDK_KEY_0:
-			webkit_web_view_set_zoom_level(WEBKIT_WEB_VIEW(c->web_view), 1);
+			webkit_web_view_set_zoom_level(WEBKIT_WEB_VIEW(c->web_view), global_zoom);
 			return TRUE;
 		case GDK_KEY_O:
 			t = gtk_entry_get_text(GTK_ENTRY(c->location));
