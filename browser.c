@@ -16,6 +16,8 @@
 #include<libnotify/notify.h>
 
 NotifyNotification *download_notif;
+NotifyNotification *javascript_notif;
+
 void client_destroy(GtkWidget *, gpointer);
 WebKitWebView *client_new(const gchar *, WebKitWebView *, gboolean,
                           gboolean);
@@ -637,6 +639,7 @@ downloadmanager_setup(void)
 
     notify_init("Lariza");
     download_notif = notify_notification_new("Lariza", NULL, NULL);
+    javascript_notif = notify_notification_new("Lariza", NULL, NULL);
 
 }
 
@@ -932,10 +935,16 @@ key_common(GtkWidget *widget, GdkEvent *event, gpointer data)
 		case GDK_KEY_j:
 		    webkit_settings_set_enable_javascript(webkit_web_view_get_settings(WEBKIT_WEB_VIEW(c->web_view)), FALSE);
 		    webkit_web_view_reload_bypass_cache(WEBKIT_WEB_VIEW(c->web_view));
+		    notify_notification_update(javascript_notif, "Lariza",
+			"javascript disabled", icon);
+		    notify_notification_show(javascript_notif, NULL);
 		    return TRUE;
 		case GDK_KEY_J:
 		    webkit_settings_set_enable_javascript(webkit_web_view_get_settings(WEBKIT_WEB_VIEW(c->web_view)), TRUE);
 		    webkit_web_view_reload_bypass_cache(WEBKIT_WEB_VIEW(c->web_view));
+		    notify_notification_update(javascript_notif, "Lariza",
+			"javascript enabled", icon);
+		    notify_notification_show(javascript_notif, NULL);
 		    return TRUE;
 		case GDK_KEY_b:
 		    system("larizabookmarks &"); 
