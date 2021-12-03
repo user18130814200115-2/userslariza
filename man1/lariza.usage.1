@@ -4,7 +4,7 @@
 lariza.usage \- extended usage hints
 .\" --------------------------------------------------------------------
 .SH DESCRIPTION
-\fBlariza\fP is a simple web browser using GTK+ 3, GLib and WebKit2GTK+.
+\fBlariza\fP is a simple web browser using GTK+ 3, LibNotify, GLib and WebKit2GTK+.
 This manpage contains additional hints and pointers regarding its usage.
 .\" --------------------------------------------------------------------
 .SH "HOTKEYS"
@@ -12,47 +12,73 @@ This manpage contains additional hints and pointers regarding its usage.
 These hotkeys work when either the location bar or the web view is being
 focused.
 .TP
-\fBMod1\fP + \fBq\fP
+\fBctrl\fP + \fBq\fP
 Close the current window. Quits the entire program if this was the last
 window and if there are no more active downloads (download manager is
 shown otherwise).
 .TP
-\fBMod1\fP + \fBw\fP
+\fBctrl\fP + \fBw\fP
 Go to your \(lqhomepage\(rq. See the environment variable
 $\fBLARIZA_HOME_URI\fP.
 .TP
-\fBMod1\fP + \fBe\fP
-Open a new window.
+\fBctrl\fP + \fBt\fP
+Open a new tab.
 .TP
-\fBMod1\fP + \fBr\fP
+\fBctrl\fP + \fBr\fP
 Reload the current page.
 .TP
-\fBMod1\fP + \fBd\fP
+\fBctrl\fP + \fBd\fP
 Open the download manager.
 .TP
-\fBMod1\fP + \fBl\fP
+\fBctrl\fP + \fBl\fP
 Focus the location bar.
 .TP
-\fBMod1\fP + \fBk\fP
-Focus the location bar and set its text to \fB:/\fP, allowing you to
-easily initiate a search.
+\fBctrl\fP + \fBf\fP
+Focus the location bar and set its text to \fB:/\fP, 
+thereby starting a search of the current page.
 .TP
-\fBMod1\fP + \fB2\fP
-.TQ
-\fBMod1\fP + \fBn\fP
-Repeat the last search (forward).
+\fBctrl\fP + \fBn\fP
+Search forward.
 .TP
-\fBMod1\fP + \fB3\fP
-Repeat the last search (backward).
+\fBctrl\fP + \fBShift\fP + \fBn\fP
+Search backward.
 .TP
-\fBMod1\fP + \fBc\fP
+\fBctrl\fP + \fBj\fP
+Disable javascript for the current tab and reload the page.
+.TP
+\fBctrl\fP + \fBm\fP
+Enable javascript for the current tab and reload the page.
+.TP
+\fBctrl\fP + \fBo\fP
 Reload trusted certificates.
 .TP
-\fBMod1\fP + \fBa\fP / \fBMod1\fP + \fBs\fP
+\fBctrl\fP + \fBLeft\fP / \fBctrl\fP + \fBRight\fP
 Select tab to the left / right.
 .TP
 \fBF2\fP / \fBF3\fP
 Go backward and forward in current browser history.
+.TP
+\fBctrl\fP + \fBShift\fP + \fBo\fP
+Open current url with \fIlarizaexternalhandler\fP
+.TP
+\fBctrl\fP + \fBh\fP
+Open \fIlarizahistory\fP
+.TP
+\fBctrl\fP + \fBb\fP
+Open \fIlarizabookmarks\fP
+.TP
+\fBctrl\fP + \fB=\fP
+Increase zoom by \fB0.1\fP
+.TP
+\fBctrl\fP + \fB-\fP
+Decrease zoom by \fB0.1\fP
+.TP
+\fBctrl\fP + \fB+\fP
+Reset zoom to \fBLARIZA_ZOOM\fP see
+\fBlariza\fP(1).
+.TP
+\fBctrl\fP + \fB[1-9]\fP
+Focus tab coresponding to the given number
 .P
 .SS "Main window \(em WebKit viewport focused"
 .TP
@@ -65,17 +91,17 @@ Open the link under the pointer in a new window.
 \fBBackward\fP / \fBforward\fP (mouse keys 8 and 9)
 Same as \fBF2\fP and \fBF3\fP.
 .TP
-\fBMod1\fP + \fBScroll up\fP
+\fBctrl\fP + \fBScroll up\fP
 .TQ
 \fBCtrl\fP + \fBScroll up\fP
 Increase zoom level of the current page.
 .TP
-\fBMod1\fP + \fBScroll down\fP
+\fBctrl\fP + \fBScroll down\fP
 .TQ
 \fBCtrl\fP + \fBScroll down\fP
 Decrase zoom level of the current page.
 .TP
-\fBMod1\fP + \fBScroll horizontally\fP
+\fBctrl\fP + \fBScroll horizontally\fP
 .TQ
 \fBCtrl\fP + \fBScroll horizontally\fP
 Reset zoom to $\fBLARIZA_ZOOM\fP.
@@ -90,9 +116,9 @@ Commit, i.e. begin searching or open the URI.
 .P
 .SS "Download manager"
 .TP
-\fBMod1\fP + \fBd\fP
+\fBctrl\fP + \fBd\fP
 .TQ
-\fBMod1\fP + \fBq\fP
+\fBctrl\fP + \fBq\fP
 Close the download manager. Active downloads are never aborted. However,
 if there are no more active downloads and no more browsing windows, then
 the entire program will quit.
@@ -178,6 +204,24 @@ restart \fBlariza\fP.
 Note: This is NOT equal to certificate pinning. WebKit ignores
 user-specified certificates if the server's certificate can be validated
 by any system-wide CA.
+.\" --------------------------------------------------------------------
+.SH EXTERNAL PROGRAMS
+Lariza calls a number of external programs to facilitate extensibility.
+These programs are all language independent.
+.TP
+\fBlarizahistory
+is called without any arguments,
+the program is intended to parse the \fILARIZA_HISTORY_FILE\fP
+with some sort of menu selector.
+.TP
+\fBlarizabookmarks
+is a program called in the same way as \fIlarizahistory\fP.
+While it could be used for anything you like,
+the intended use case is a bookmark manager
+.TP
+\fBlarizaexternalhandler
+opens the \fBURI\fP currently displayed in the URI-bar.
+The \fBURI\fP is passed as \fB$1\fP to the program.
 .\" --------------------------------------------------------------------
 .SH "SEE ALSO"
 .BR lariza (1).
