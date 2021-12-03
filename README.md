@@ -37,6 +37,8 @@ a simple webkit GTK3 browser.
 - Default to `https` over `http`
 - Instead of opening up the download manager when a new download is started, send a desktop notification
    - Download manager is still accessible through the keybind  
+- Disable GTK window decorations.
+    - This is temporary until [#2191](https://gitlab.gnome.org/GNOME/gtk/-/merge_requests/2191) is merged.
 
 ## Examples of external program use
 A basic `larizahistory` in posix shell might look like
