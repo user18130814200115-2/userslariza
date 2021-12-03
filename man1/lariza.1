@@ -9,7 +9,7 @@ lariza \- simple web browser
 [\fIURI ...\fP]
 .\" --------------------------------------------------------------------
 .SH DESCRIPTION
-\fBlariza\fP is a simple web browser using GTK+ 3, GLib and WebKit2GTK+.
+\fBlariza\fP is a simple web browser using GTK+ 3, LibNotify ,GLib and WebKit2GTK+.
 .\" --------------------------------------------------------------------
 .SH OPTIONS
 In addition to the standard arguments of GTK+ 3, \fBlariza\fP knows
@@ -79,6 +79,12 @@ default value if unset.
 .TP
 \fBLARIZA_ZOOM
 Zoom level for WebKit viewports. Defaults to \fB1.0\fP.
+.TP
+\fBLARIZA_SEARCH_URI
+\fBURI\fP used by lariza to initate a search.
+Searches are initated if the url given has no protocol specified
+and no \fB.\fP in the string.
+Defaults to \fBhttps://html.duckduckgo.com/html\fP
 .\" --------------------------------------------------------------------
 .SH FILES
 XDG variables will be used to construct these paths.
