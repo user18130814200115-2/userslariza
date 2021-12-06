@@ -7,4 +7,4 @@ url=$(sed -e "s|^$LARIZA_HOME_URI$||g" -e 's|^[a-z]*://||g' -e '/^$/d' "$HOME/.c
 
 
 # check if we have selected anything, and open the tab
-[ -z $url ] || lariza "https://$url"
+[ -z $url ] || cgull "https://$url"
