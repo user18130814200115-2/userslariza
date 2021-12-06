@@ -31,13 +31,13 @@ See manpage for all features, variables and external program usuage
 ## Examples of external program use
 A basic `cgullhistory` in posix shell might look like
 ```
-     #!/bin/sh
-     tac "$CGULL_HISTORY_FILE" | dmenu | xargs cgull
+#!/bin/sh
+tac "$CGULL_HISTORY_FILE" | dmenu | xargs cgull
 ```
 Similarly, `cgullbookmarks`
 ```
-     #!/bin/sh
-     cat "$HOME/.cache/cgull/bookmarks" | dmenu | xargs cgull
+#!/bin/sh
+cat "$HOME/.cache/cgull/bookmarks" | dmenu | xargs cgull
 ```
 The file "bookmarks" contains a list of links,
 because it is an external program, you can make this as complex as you like.
@@ -46,13 +46,13 @@ You can even give the bookmarks names and output the corresponding url into cgul
 `cgullexternalhander` works a bit different,
 it receives the current url as $1, so you might use
 ```
-   #!/bin/sh
-   firefox $1
+#!/bin/sh
+firefox $1
 ```
 to open the link in firefox, though you probably want to make a selection menu with something like dmenu
 ```
-   #!/bin/sh
-   echo "firefox\nvhromium\nmpv\nyoutube-dl" | dmenu | xargs cgull $1
+#!/bin/sh
+echo "firefox\nvhromium\nmpv\nyoutube-dl" | dmenu | xargs cgull $1
 ```
 
 For each of these examples, one should remember that the scripts are just that, **examples**.
@@ -71,19 +71,19 @@ The following C libraries are required:
 cgull expects to be run on a POSIX-ish operating system.
 
 To build the program and install it to /usr/local:
-
-    $ make
-    # make install
-
+```
+$ make
+# make install
+```
 To use bundled web extensions, they must be copied or symlinked to the
 appropriate path. Please refer to the manpage.
 
 
 ## Running
 You simply invoke the main program:
-
-    $ cgull
-
+```
+$ cgull
+```
 Refer to the manpage for all options.
 
 ## Background information
