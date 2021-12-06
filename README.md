@@ -88,10 +88,7 @@ Refer to the manpage for all options.
 
 ## Background information
 What cgull is and what it's not
-cgull does what I need. It won't do other things. I'm open for pull
-requests but please don't be upset if I turn them down -- which might
-happen if it's a feature that I simply don't need. That being said,
-you should have a look at the PATCHES file. :-)
+cgull does what I need. It won't do other things.
 cgull does not compete with powerful browsers like dwb or luakit, nor
 with monstrous applications like Firefox or Chromium. 
 
