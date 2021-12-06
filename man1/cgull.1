@@ -1,18 +1,18 @@
-.TH lariza 1 "2021-01-03" "lariza" "User Commands"
+.TH cgull 1 "2021-01-03" "cgull" "User Commands"
 .\" --------------------------------------------------------------------
 .SH NAME
-lariza \- simple web browser
+cgull \- simple web browser
 .\" --------------------------------------------------------------------
 .SH SYNOPSIS
-\fBlariza\fP
+\fBcgull\fP
 [\fB\-C\fP]
 [\fIURI ...\fP]
 .\" --------------------------------------------------------------------
 .SH DESCRIPTION
-\fBlariza\fP is a simple web browser using GTK+ 3, LibNotify ,GLib and WebKit2GTK+.
+\fBcgull\fP is a simple web browser using GTK+ 3, LibNotify ,GLib and WebKit2GTK+.
 .\" --------------------------------------------------------------------
 .SH OPTIONS
-In addition to the standard arguments of GTK+ 3, \fBlariza\fP knows
+In addition to the standard arguments of GTK+ 3, \fBcgull\fP knows
 about the following options:
 .TP
 \fB\-C\fP
@@ -22,7 +22,7 @@ After these options there can be any number of URIs. If no URIs are
 given, $\fBLARIZA_HOME_URI\fP will be opened.
 .\" --------------------------------------------------------------------
 .SH ENVIRONMENT
-In addition to the standard variables of GTK+ 3, \fBlariza\fP knows
+In addition to the standard variables of GTK+ 3, \fBcgull\fP knows
 about the following environment variables:
 .P
 .TP
@@ -50,14 +50,14 @@ Enable writing WebKit console messages to stdout.
 Cooperative instances are implemented using a named pipe in the file
 system. The name of this pipe usually is (at least on modern systems
 following XDG \(lqstandards\(rq):
-\fI/var\:/run\:/user\:/$UID\:/lariza.fifo\:-$LARIZA_FIFO_SUFFIX\fP.
+\fI/var\:/run\:/user\:/$UID\:/cgull.fifo\:-$LARIZA_FIFO_SUFFIX\fP.
 
 $\fBUID\fP is the id of your user. $\fBLARIZA_FIFO_SUFFIX\fP defaults to
 \fBmain\fP. If you change this variable, you can launch several
-independent cooperative instances of \fBlariza\fP.
+independent cooperative instances of \fBcgull\fP.
 .TP
 \fBLARIZA_HISTORY_FILE\fP
-If set, \fBlariza\fP will write each visited URI to that file. This path
+If set, \fBcgull\fP will write each visited URI to that file. This path
 can point to a named pipe, but be aware that the browser will block
 until a reader at the other end of the pipe has read all pending data.
 .TP
@@ -74,14 +74,14 @@ Can be one of \fBtop\fP (default), \fBright\fP, \fBbottom\fP,
 An integer, determines width of tabs. Defaults to 20.
 .TP
 \fBLARIZA_USER_AGENT\fP
-\fBlariza\fP will identify itself with this string. Uses WebKit's
+\fBcgull\fP will identify itself with this string. Uses WebKit's
 default value if unset.
 .TP
 \fBLARIZA_ZOOM
 Zoom level for WebKit viewports. Defaults to \fB1.0\fP.
 .TP
 \fBLARIZA_SEARCH_URI
-\fBURI\fP used by lariza to initate a search.
+\fBURI\fP used by cgull to initate a search.
 Searches are initated if the url given has no protocol specified
 and no \fB.\fP in the string.
 Defaults to \fBhttps://html.duckduckgo.com/html\fP
@@ -89,22 +89,22 @@ Defaults to \fBhttps://html.duckduckgo.com/html\fP
 .SH FILES
 XDG variables will be used to construct these paths.
 .TP
-\fI~/.config\:/lariza\:/adblock\fP
-Adblock patterns. See \fBlariza.usage\fP(1).
+\fI~/.config\:/cgull\:/adblock\fP
+Adblock patterns. See \fBcgull.usage\fP(1).
 .TP
-\fI~/.config\:/lariza\:/certs\fP
+\fI~/.config\:/cgull\:/certs\fP
 Directory where trusted certificates are stored. See
-\fBlariza.usage\fP(1).
+\fBcgull.usage\fP(1).
 .TP
-\fI~/.config\:/lariza\:/scripts\fP
+\fI~/.config\:/cgull\:/scripts\fP
 Directory to store user-supplied JavaScript snippets. See
-\fBlariza.usage\fP(1).
+\fBcgull.usage\fP(1).
 .TP
-\fI~/.local\:/share\:/lariza\:/web_extensions\fP
+\fI~/.local\:/share\:/cgull\:/web_extensions\fP
 Sets the directory where WebKit will look for web extensions. See
-\fBlariza.usage\fP(1).
+\fBcgull.usage\fP(1).
 .TP
-\fI~/.cache\:/lariza\fP
+\fI~/.cache\:/cgull\fP
 .TQ
 \fI~/.cache\:/webkitgtk\fP
 .TQ
@@ -114,12 +114,12 @@ wise to clean those directories regularly or to mount them as
 \fBtmpfs\fP(5).
 .\" --------------------------------------------------------------------
 .SH LICENSE
-\fBlariza\fP is released under the MIT license. See the accompanying
+\fBcgull\fP is released under the MIT license. See the accompanying
 \fILICENSE\fP file.
 .\" --------------------------------------------------------------------
 .SH HISTORY
-\fBlariza\fP was originally written by Peter Hofmann. The project
+\fBcgull\fP was originally written by Peter Hofmann. The project
 was started in June 2014.
 .\" --------------------------------------------------------------------
 .SH "SEE ALSO"
-.BR lariza.usage (1).
+.BR cgull.usage (1).

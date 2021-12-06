@@ -1,10 +1,10 @@
-.TH lariza 1 "2021-01-03" "lariza" "User Commands"
+.TH cgull 1 "2021-01-03" "cgull" "User Commands"
 .\" --------------------------------------------------------------------
 .SH NAME
-lariza.usage \- extended usage hints
+cgull.usage \- extended usage hints
 .\" --------------------------------------------------------------------
 .SH DESCRIPTION
-\fBlariza\fP is a simple web browser using GTK+ 3, LibNotify, GLib and WebKit2GTK+.
+\fBcgull\fP is a simple web browser using GTK+ 3, LibNotify, GLib and WebKit2GTK+.
 This manpage contains additional hints and pointers regarding its usage.
 .\" --------------------------------------------------------------------
 .SH "HOTKEYS"
@@ -19,7 +19,7 @@ shown otherwise).
 .TP
 \fBctrl\fP + \fBw\fP
 Go to your \(lqhomepage\(rq. See the environment variable
-$\fBLARIZA_HOME_URI\fP.
+$\fBCGULL_HOME_URI\fP.
 .TP
 \fBctrl\fP + \fBt\fP
 Open a new tab.
@@ -59,13 +59,13 @@ Select tab to the left / right.
 Go backward and forward in current browser history.
 .TP
 \fBctrl\fP + \fBShift\fP + \fBo\fP
-Open current url with \fIlarizaexternalhandler\fP
+Open current url with \fIcgullexternalhandler\fP
 .TP
 \fBctrl\fP + \fBh\fP
-Open \fIlarizahistory\fP
+Open \fIcgullhistory\fP
 .TP
 \fBctrl\fP + \fBb\fP
-Open \fIlarizabookmarks\fP
+Open \fIcgullbookmarks\fP
 .TP
 \fBctrl\fP + \fB=\fP
 Increase zoom by \fB0.1\fP
@@ -74,8 +74,8 @@ Increase zoom by \fB0.1\fP
 Decrease zoom by \fB0.1\fP
 .TP
 \fBctrl\fP + \fB0\fP
-Reset zoom to \fBLARIZA_ZOOM\fP see
-\fBlariza\fP(1).
+Reset zoom to \fBCGULL_ZOOM\fP see
+\fBcgull\fP(1).
 .TP
 \fBctrl\fP + \fB[1-9]\fP
 Focus tab coresponding to the given number
@@ -104,7 +104,7 @@ Decrase zoom level of the current page.
 \fBctrl\fP + \fBScroll horizontally\fP
 .TQ
 \fBCtrl\fP + \fBScroll horizontally\fP
-Reset zoom to $\fBLARIZA_ZOOM\fP.
+Reset zoom to $\fBCGULL_ZOOM\fP.
 .P
 .SS "Main window \(em location bar focused"
 .TP
@@ -128,21 +128,21 @@ Open the download manager using the appropriate hotkey. A new window
 listing your downloads will appear. Clicking on an item will remove it
 from the list and \(em if needed \(em cancel the download.
 .P
-There's no file manager integration, nor does \fBlariza\fP delete,
+There's no file manager integration, nor does \fBcgull\fP delete,
 overwrite or resume downloads. If a file already exists, it won't be
 touched. Instead, the new file name will have a suffix such as \fB.1\fP,
 \fB.2\fP, \fB.3\fP, and so on.
 .\" --------------------------------------------------------------------
 .SH "USER-SUPPLIED JAVASCRIPT FILES"
 After a page has been successfully loaded, the directory
-\fI~/.config\:/lariza\:/user-scripts\fP will be scanned and each file in
+\fI~/.config\:/cgull\:/user-scripts\fP will be scanned and each file in
 it ending with \fB.js\fP will be run as a JavaScript file in the context
 of said page.
 .P
-During development, you will most likely want to run \fBlariza\fP with
-$\fBLARIZA_ENABLE_CONSOLE_TO_STDOUT\fP enabled.
+During development, you will most likely want to run \fBcgull\fP with
+$\fBCGULL_ENABLE_CONSOLE_TO_STDOUT\fP enabled.
 .P
-\fBlariza\fP comes with the following scripts:
+\fBcgull\fP comes with the following scripts:
 .TP
 \fBhints.js\fP
 Press \fBf\fP (open link in current window) or \fBF\fP (open in new
@@ -154,18 +154,18 @@ To use them, though, make sure to link them to the directory mentioned
 above.
 .\" --------------------------------------------------------------------
 .SH "WEB EXTENSIONS"
-On startup, WebKit checks \fI~/.config/lariza/web_extensions\fP for any
+On startup, WebKit checks \fI~/.config/cgull/web_extensions\fP for any
 \fB.so\fP files. See
 .UR http://\:blogs.igalia.com/\:carlosgc/\:2013/\:09/\:10/\:webkit2gtk-\:web-\:process-\:extensions/
 this blog post
 .UE
 for further information on these extensions.
 .P
-\fBlariza\fP comes with the following extensions:
+\fBcgull\fP comes with the following extensions:
 .TP
 \fBwe_adblock.so\fP
 Generic adblock. Reads patterns from the file
-\fI~/.config/lariza/adblock\fP. Each line can contain a regular
+\fI~/.config/cgull/adblock\fP. Each line can contain a regular
 expression. These expressions match case-insensitive and partially, i.e.
 \fB.*foo.*\fP is the same as \fB.*FOO.*\fP and you can use anchors like
 \fB^https?://...\fP. Please refer to
@@ -179,13 +179,13 @@ Those bundled web extensions are automatically compiled when you run
 make sure to link them to the directory mentioned above.
 .\" --------------------------------------------------------------------
 .SH "TRUSTED CERTIFICATES"
-By default, \fBlariza\fP trusts whatever CAs are trusted by WebKit. If
+By default, \fBcgull\fP trusts whatever CAs are trusted by WebKit. If
 you wish to trust additional certificates, such as self-signed
 certificates, the first thing you should do is try to add the
 appropriate CAs to your system-wide store.
 .P
 If you wish to add simple exceptions, you can grab the certificate and
-store it in the directory \fI~/.config/lariza/certs\fP. The filename
+store it in the directory \fI~/.config/cgull/certs\fP. The filename
 must be equal to the hostname:
 .P
 \f(CW
@@ -194,12 +194,12 @@ must be equal to the hostname:
 .fi
 \fP
 .P
-This tells \fBlariza\fP to trust the given certificate when connecting
+This tells \fBcgull\fP to trust the given certificate when connecting
 to host \fBfoo.de\fP.
 .P
 You can reload these certificates at runtime by pressing the appropriate
 hotkey. Note that removed certificates will be kept in memory until you
-restart \fBlariza\fP.
+restart \fBcgull\fP.
 .P
 Note: This is NOT equal to certificate pinning. WebKit ignores
 user-specified certificates if the server's certificate can be validated
@@ -209,19 +209,19 @@ by any system-wide CA.
 Lariza calls a number of external programs to facilitate extensibility.
 These programs are all language independent.
 .TP
-\fBlarizahistory
+\fBcgullhistory
 is called without any arguments,
-the program is intended to parse the \fILARIZA_HISTORY_FILE\fP
+the program is intended to parse the \fICGULL_HISTORY_FILE\fP
 with some sort of menu selector.
 .TP
-\fBlarizabookmarks
-is a program called in the same way as \fIlarizahistory\fP.
+\fBcgullbookmarks
+is a program called in the same way as \fIcgullhistory\fP.
 While it could be used for anything you like,
 the intended use case is a bookmark manager
 .TP
-\fBlarizaexternalhandler
+\fBcgullexternalhandler
 opens the \fBURI\fP currently displayed in the URI-bar.
 The \fBURI\fP is passed as \fB$1\fP to the program.
 .\" --------------------------------------------------------------------
 .SH "SEE ALSO"
-.BR lariza (1).
+.BR cgull (1).

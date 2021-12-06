@@ -1,6 +1,6 @@
 CFLAGS += -Wall -Wextra -Wno-unused-parameter -O3
-__NAME__ = lariza
-__NAME_UPPERCASE__ = LARIZA
+__NAME__ = cgull
+__NAME_UPPERCASE__ = CGULL
 
 INSTALL = install
 INSTALL_PROGRAM = $(INSTALL)
@@ -15,6 +15,7 @@ mandir = $(datarootdir)/man
 man1dir = $(mandir)/man1
 datadir = $(prefix)/share
 appdir = /usr/share/applications
+logodir = /usr/share/icons/hicolor/48x48/apps
 
 
 .PHONY: all clean install installdirs
@@ -46,6 +47,8 @@ install: all installdirs
 		$(DESTDIR)$(datadir)/$(__NAME__)/user-scripts/hints.js
 	$(INSTALL_DATA) $(__NAME__).desktop\
 	    $(DESTDIR)$(appdir)/$(__NAME__).desktop
+	$(INSTALL_DATA) $(__NAME__).svg\
+	    $(DESTDIR)$(logodir)/$(__NAME__).desktop
 
 installdirs:
 	mkdir -p $(DESTDIR)$(bindir) $(DESTDIR)$(man1dir) \

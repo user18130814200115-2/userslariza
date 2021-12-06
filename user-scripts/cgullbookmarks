@@ -3,8 +3,8 @@
 # using sed, we filter the bookmarks and remove their protocol
 # then we pipe them into a dmenu-like program, mine is called launcher
 
-url=$(sed -e "s|^$LARIZA_HOME_URI$||g" -e 's|^[a-z]*://||g' -e '/^$/d' "$HOME/.cache/lariza/bookmarks" | launcher)
+url=$(sed -e "s|^$CGULL_HOME_URI$||g" -e 's|^[a-z]*://||g' -e '/^$/d' "$HOME/.cache/cgull/bookmarks" | launcher)
 
 
 # check if we have selected anything, and open the tab
-[ -z $url ] || lariza "https://$url"
+[ -z $url ] || cgull "https://$url"

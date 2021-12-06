@@ -85,7 +85,7 @@ struct DownloadManager
     GtkWidget *win;
 } dm;
 
-const char *icon = "epiphany-webkit";
+const char *icon = "cgull";
 const gchar *accepted_language[2] = { NULL, NULL };
 gint clients = 0, downloads = 0;
 gboolean cooperative_alone = TRUE;
@@ -513,7 +513,7 @@ void
 download_handle_finished(WebKitDownload *download, gpointer data)
 {
     downloads--;
-    notify_notification_update(download_notif, "Lariza",
+    notify_notification_update(download_notif, __NAME__,
 	    g_strdup_printf("Download Finished\r%d still active", downloads), icon);
     notify_notification_show(download_notif, NULL);
 }
@@ -580,7 +580,7 @@ download_handle(WebKitDownload *download, gchar *suggested_filename, gpointer da
     }
 
 
-    notify_notification_update(download_notif, "Lariza",
+    notify_notification_update(download_notif, __NAME__,
 	    g_strdup_printf("Downloading %s.%d", sug_clean, suffix), icon);
     notify_notification_show(download_notif, NULL);
 
@@ -637,9 +637,9 @@ downloadmanager_setup(void)
 
     gtk_container_add(GTK_CONTAINER(dm.win), dm.scroll);
 
-    notify_init("Lariza");
-    download_notif = notify_notification_new("Lariza", NULL, NULL);
-    javascript_notif = notify_notification_new("Lariza", NULL, NULL);
+    notify_init(__NAME__);
+    download_notif = notify_notification_new(__NAME__, NULL, NULL);
+    javascript_notif = notify_notification_new(__NAME__, NULL, NULL);
 
 }
 
@@ -935,22 +935,22 @@ key_common(GtkWidget *widget, GdkEvent *event, gpointer data)
 		case GDK_KEY_j:
 		    webkit_settings_set_enable_javascript(webkit_web_view_get_settings(WEBKIT_WEB_VIEW(c->web_view)), FALSE);
 		    webkit_web_view_reload_bypass_cache(WEBKIT_WEB_VIEW(c->web_view));
-		    notify_notification_update(javascript_notif, "Lariza",
+		    notify_notification_update(javascript_notif, __NAME__,
 			"javascript disabled", icon);
 		    notify_notification_show(javascript_notif, NULL);
 		    return TRUE;
 		case GDK_KEY_J:
 		    webkit_settings_set_enable_javascript(webkit_web_view_get_settings(WEBKIT_WEB_VIEW(c->web_view)), TRUE);
 		    webkit_web_view_reload_bypass_cache(WEBKIT_WEB_VIEW(c->web_view));
-		    notify_notification_update(javascript_notif, "Lariza",
+		    notify_notification_update(javascript_notif, __NAME__,
 			"javascript enabled", icon);
 		    notify_notification_show(javascript_notif, NULL);
 		    return TRUE;
 		case GDK_KEY_b:
-		    system("larizabookmarks &"); 
+		    system("cgullbookmarks &"); 
 		    return TRUE;
 		case GDK_KEY_h:
-		    system("larizahistory &"); 
+		    system("cgullhistory &"); 
 		    return TRUE;
 		case GDK_KEY_m:
                     search(c, -1);
@@ -974,10 +974,12 @@ key_common(GtkWidget *widget, GdkEvent *event, gpointer data)
                     return TRUE;
 
 		case GDK_KEY_equal:
-			webkit_web_view_set_zoom_level(WEBKIT_WEB_VIEW(c->web_view), webkit_web_view_get_zoom_level(WEBKIT_WEB_VIEW(c->web_view))+0.1);
+			webkit_web_view_set_zoom_level(WEBKIT_WEB_VIEW(c->web_view),
+				webkit_web_view_get_zoom_level(WEBKIT_WEB_VIEW(c->web_view))+0.1);
 			return TRUE;
 		case GDK_KEY_minus:
-			webkit_web_view_set_zoom_level(WEBKIT_WEB_VIEW(c->web_view), webkit_web_view_get_zoom_level(WEBKIT_WEB_VIEW(c->web_view))-0.1);
+			webkit_web_view_set_zoom_level(WEBKIT_WEB_VIEW(c->web_view),
+				webkit_web_view_get_zoom_level(WEBKIT_WEB_VIEW(c->web_view))-0.1);
 			return TRUE;
 		case GDK_KEY_0:
 			webkit_web_view_set_zoom_level(WEBKIT_WEB_VIEW(c->web_view), global_zoom);
@@ -985,7 +987,7 @@ key_common(GtkWidget *widget, GdkEvent *event, gpointer data)
 		case GDK_KEY_O:
 			t = gtk_entry_get_text(GTK_ENTRY(c->location));
 			char buf[2000];
-			sprintf(buf, "larizaexternalhandler %s &", t);
+			sprintf(buf, "cgullexternalhandler %s &", t);
 			system(buf);
 			return TRUE;
 		case GDK_KEY_1:
