@@ -1,4 +1,4 @@
-# Lariza
+# Cgull browser
 This is a fork of the [lariza browser](https://uninformativ.de/git/lariza),
 a simple webkit GTK3 browser.
 
@@ -23,16 +23,16 @@ a simple webkit GTK3 browser.
     - Search moved to ctrl+f
     - Main mod key moved from Mod1 to ctrl
 - Keybinding to manage history with external program (ctrl+h)
-  - Pressing this keybinding will load `larizahistory` from your PATH
-- Keybind for `larizabookmarks` external program simmilar to `larizahistory`, may be integrated with `larizaexternalhandler`
-- Brought back `larizaexternalhandler`
+  - Pressing this keybinding will load `cgullhistory` from your PATH
+- Keybind for `cgullbookmarks` external program simmilar to `cgullhistory`, may be integrated with `cgullexternalhandler`
+- Brought back `larizaexternalhandler` in the form of `cgullexternalhandler`
   - This is a language agnostic program that is called on Ctrl+Shift+o by default.
-  - The program will be called like so `larizaexternalhandler $CURRENT_URL` to open the current url in the bar with an external program
-- A lariza.desktop file is automatically installed on `make install`
+  - The program will be called like so `cgullexternalhandler $CURRENT_URL` to open the current url in the bar with an external program
+- A cgull.desktop file is automatically installed on `make install`
 - Keys for previous/next tab remapped to (ctrl+Left) (ctrl+Right)
 - Dedicated keys to get to a certain tab on (ctrl+`n`) where `n` is a number key
-- Search LARIZA_SEARCH_URI if the url input does not start with a protocol and the string does not contain a `.`
-   - LARIZA_SEARCH_URI defaults to `https://html.duckduckgo.com/html`
+- Search CGULL_SEARCH_URI if the url input does not start with a protocol and the string does not contain a `.`
+   - CGULL_SEARCH_URI defaults to `https://html.duckduckgo.com/html`
    - EG typing `test` into the urlbar will lead to `https://html.duckduckgo.com/html?q=test` while `test.com` will default to `https://test.com`
 - Default to `https` over `http`
 - Instead of opening up the download manager when a new download is started, send a desktop notification
@@ -41,21 +41,21 @@ a simple webkit GTK3 browser.
     - This is temporary until [#2191](https://gitlab.gnome.org/GNOME/gtk/-/merge_requests/2191) is merged.
 
 ## Examples of external program use
-A basic `larizahistory` in posix shell might look like
+A basic `cgullhistory` in posix shell might look like
 ```
      #!/bin/sh
-     tac "$LARIZA_HISTORY_FILE" | dmenu | xargs lariza
+     tac "$CGULL_HISTORY_FILE" | dmenu | xargs cgull
 ```
-Similarly, `larizabookmarks`
+Similarly, `cgullbookmarks`
 ```
      #!/bin/sh
-     cat "$HOME/.cache/lariza/bookmarks" | dmenu | xargs lariza
+     cat "$HOME/.cache/cgull/bookmarks" | dmenu | xargs cgull
 ```
 The file "bookmarks" contains a list of links,
 because it is an external program, you can make this as complex as you like.
-You can even give the bookmarks names and output the corresponding url into lariza.
+You can even give the bookmarks names and output the corresponding url into cgull.
 
-`larizaexternalhander` works a bit different,
+`cgullexternalhander` works a bit different,
 it receives the current url as $1, so you might use
 ```
    #!/bin/sh
@@ -64,12 +64,12 @@ it receives the current url as $1, so you might use
 to open the link in firefox, though you probably want to make a selection menu with something like dmenu
 ```
    #!/bin/sh
-   echo "firefox\nvhromium\nmpv\nyoutube-dl" | dmenu | xargs lariza $1
+   echo "firefox\nvhromium\nmpv\nyoutube-dl" | dmenu | xargs cgull $1
 ```
 
 For each of these examples, one should remember that the scripts are just that, **examples**.
 Primarily, they do not check if the user actually selects anything,
-thus always opening a new tab on lariza even if no bookmark or history-url was selected.
+thus always opening a new tab on cgull even if no bookmark or history-url was selected.
 
 Better examples can be found under `user-scripts/`
 
@@ -80,7 +80,7 @@ The following C libraries are required:
 - WebKit2 API for GTK+ 3
 - Libnotify
 
-lariza expects to be run on a POSIX-ish operating system.
+cgull expects to be run on a POSIX-ish operating system.
 
 To build the program and install it to /usr/local:
 
@@ -94,31 +94,21 @@ appropriate path. Please refer to the manpage.
 ## Running
 You simply invoke the main program:
 
-    $ lariza
+    $ cgull
 
 Refer to the manpage for all options.
 
 ## Background information
-What lariza is and what it's not
-lariza does what I need. It won't do other things. I'm open for pull
+What cgull is and what it's not
+cgull does what I need. It won't do other things. I'm open for pull
 requests but please don't be upset if I turn them down -- which might
 happen if it's a feature that I simply don't need. That being said,
 you should have a look at the PATCHES file. :-)
-lariza does not compete with powerful browsers like dwb or luakit, nor
+cgull does not compete with powerful browsers like dwb or luakit, nor
 with monstrous applications like Firefox or Chromium. 
 
-About the name
-"lariza" stems from a german sentence:
-```
-Alle anderen waren mir zu anstrengend.
- l   a         r    i  z  a
-```
-That phrase basically means: "It was too tiresome to deal with any
-other browser." I couldn't find a simple browser that does just what I
-need. Most of them are utterly bloated, others lack essential
-functions. Thus, I was forced to write scripts and tools and stuff to
-deal with these issues. That is what was tiresome. I don't want to
-work around bugs or nonsensical behavior anymore.
-So, I wrote my own browser^W WebKit GUI. WebKit does all the dirty
-work.
-
+About the name,
+"cgull" deconstructs into "C-GTK-User's-Lariza".
+Lariza is of course the original browser this fork is based on,
+written in c with GTK.
+User is me.
