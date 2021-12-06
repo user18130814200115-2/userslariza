@@ -1,9 +1,10 @@
 #!/bin/sh
 
 # Filter the urls in the histfile on uniqueness, recency and protocol
-# Then pipe them into a dmenu like application, mine is called launcher
+# Empty lines are removed as is the home url.
+# Then pipe them into a dmenu-like application, mine is called launcher
 
-url=$(grep "http" "$LARIZA_HISTORY_FILE" | sed -e "s|^$LARIZA_HOME_URI$||g" -e 's|^[a-z]*://||g' -e '/^$/d'  | uniq | tail -n 300 | tac | launcher "796x456" )
+url=$(grep "http" "$CGULL_HISTORY_FILE" | sed -e "s|^$CGULL_HOME_URI$||g" -e 's|^[a-z]*://||g' -e '/^$/d'  | uniq | tail -n 300 | tac | launcher "796x456" )
 
 # check if we have selected anything, and open the tab
-[ -n "$url" ] && lariza "https://$url"
+[ -n "$url" ] && cgull "https://$url"
