@@ -8,37 +8,25 @@ a simple webkit GTK3 browser.
 - Built-in download manager
 - Indicator for web feeds
 - Global content zoom
+- Keybindings for zooming in, out and resetting zoom
 - Cooperative instances using FIFOs
 - Certificate trust store
 - Bundled user-supplied JavaScripts (optional):
     - Link hints
 - Bundled web extensions (optional):
-    - Adblock
-
-## Added features
-- Keybindings to disable- (ctl+j) and re-enable-javascript (ctrl+shift+j)
-- Keybindings added for zooming in and out (ctrl+=) (ctrl+-)
-  + Keybind to reset zoom (ctrl+0)
-- Other keybindings have been changed to be more familiar
-    - Search moved to ctrl+f
-    - Main mod key moved from Mod1 to ctrl
-- Keybinding to manage history with external program (ctrl+h)
-  - Pressing this keybinding will load `cgullhistory` from your PATH
-- Keybind for `cgullbookmarks` external program simmilar to `cgullhistory`, may be integrated with `cgullexternalhandler`
-- Brought back `larizaexternalhandler` in the form of `cgullexternalhandler`
-  - This is a language agnostic program that is called on Ctrl+Shift+o by default.
-  - The program will be called like so `cgullexternalhandler $CURRENT_URL` to open the current url in the bar with an external program
+- Adblock
+- Keybindings toggle javascript
+- Keybinding to manage history and bookmarks with external program
+- Open the curent link with an external program
 - A cgull.desktop file is automatically installed on `make install`
-- Keys for previous/next tab remapped to (ctrl+Left) (ctrl+Right)
 - Dedicated keys to get to a certain tab on (ctrl+`n`) where `n` is a number key
 - Search CGULL_SEARCH_URI if the url input does not start with a protocol and the string does not contain a `.`
-   - CGULL_SEARCH_URI defaults to `https://html.duckduckgo.com/html`
-   - EG typing `test` into the urlbar will lead to `https://html.duckduckgo.com/html?q=test` while `test.com` will default to `https://test.com`
 - Default to `https` over `http`
-- Instead of opening up the download manager when a new download is started, send a desktop notification
-   - Download manager is still accessible through the keybind  
+- Desktop notifications for download- and javascript-status
 - Disable GTK window decorations.
     - This is temporary until [#2191](https://gitlab.gnome.org/GNOME/gtk/-/merge_requests/2191) is merged.
+
+See manpage for all features, variables and external program usuage
 
 ## Examples of external program use
 A basic `cgullhistory` in posix shell might look like
