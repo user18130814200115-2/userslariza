@@ -1,24 +1,38 @@
 #!/bin/sh
 
-# List of aplications, most of these are custom scrips
+
+# Functions are for programs you do not have a file for in your PATH
+# I use this for programs that I never call outside of cgull
+bookmark_func() {
+    printf "%s\n" "$1" >> $HOME/.cache/cgull/bookmarks
+}
+pdf_func(){
+    cgull "http://pdf.fivefilters.org/simple-print/url.php?size=A5#$1"
+}
+
+
+# This is a list of all the applications and functions we call
+# They are all formatted like so `pretty_name:function_name`
+# The pretty name will be displayed while the function name will be called
+# The function name can be either a program in the user's PATH or a function like those above
 applications="\
-yt2mpv
-pdf
-firefox
-bookmark
-youtube-dl
-deemix
-ex-audio
-chromium
+youtube:yt2mpv
+one time password:cgullotp
+bookmark:bookmark_func
+tuir:footclient tuir
+pdf:pdf_func
+firefox:firefox
+deemix:deemix
 "
 
-# Allow the user to select the wanted program via a dmenu-like menu, mine is called launcher
-application=$(printf "$applications" | launcher)
+# First let the user select the program they want to use by pretty name.
+# The selector I use is called `launcher`, you might look at dmenu, rofi or bemenu for alternatives
+application=$(printf "$applications" | cut -d: -f1 | launcher)
+# Now, we get the function name from the program we selected
+application=$(printf "$applications" | grep "^$application:" | cut -d: -f2)
 
-# Put the url into the historyfile, this is a personal preference
-echo "$1" >> "$CGULL_HISTORY_FILE"
+# Place the url into the historyfile
+printf "$1" >> "$CGULL_HISTORY_FILE"
 
-# Check if we have selected anything and then open the url in the given application
-# NOTE, I use the river wayland compositor, and as such use riverctl spawn to get the programs to spawn independently of the lariza process.
-# Most window managers offer this functionality, though you could also do it with "&" and disown
-[ -z $application ] || riverctl spawn "$application $1"
+# If we have selected an application, open it in the background
+[ -z $application ] || $application "$1" &
