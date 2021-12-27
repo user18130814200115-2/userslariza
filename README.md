@@ -29,37 +29,22 @@ a simple webkit GTK3 browser.
 See manpage for all features, variables and external program usuage
 
 ## Examples of external program use
-A basic `cgullhistory` in posix shell might look like
-```
-#!/bin/sh
-tac "$CGULL_HISTORY_FILE" | dmenu | xargs cgull
-```
-Similarly, `cgullbookmarks`
-```
-#!/bin/sh
-cat "$HOME/.cache/cgull/bookmarks" | dmenu | xargs cgull
-```
-The file "bookmarks" contains a list of links,
-because it is an external program, you can make this as complex as you like.
-You can even give the bookmarks names and output the corresponding url into cgull.
+Example scripts can be found under `user-scripts/`.
 
-`cgullexternalhander` works a bit different,
-it receives the current url as $1, so you might use
-```
-#!/bin/sh
-firefox $1
-```
-to open the link in firefox, though you probably want to make a selection menu with something like dmenu
-```
-#!/bin/sh
-echo "firefox\nvhromium\nmpv\nyoutube-dl" | dmenu | xargs cgull $1
-```
+To explain the power of the external handler script,
+here are some of the programs I have in there:
 
-For each of these examples, one should remember that the scripts are just that, **examples**.
-Primarily, they do not check if the user actually selects anything,
-thus always opening a new tab on cgull even if no bookmark or history-url was selected.
+- mpv
+  - for opening YouTube videos in a local player
+- one time password
+  -  Looks at the url and fetches the appropriate OTP code from pass, then types it out.
+- bookmark
+  - add the current url to the bookmarks file
+- tuir
+  - open the current page in a terminal window running tuir (for reddit pages)
+- pdf format
+  - Formats the current page into a nicely readable pdf similar to Firefox's reader mode
 
-Better examples can be found under `user-scripts/`
 
 ## Installation
 The following C libraries are required:
