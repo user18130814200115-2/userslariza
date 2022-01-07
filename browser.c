@@ -7,7 +7,7 @@
 #include <string.h>
 
 #include <gtk/gtk.h>
-#include <gtk/gtkx.h>
+//#include <gtk/gtkx.h>
 #include <gdk/gdkkeysyms.h>
 #include <gio/gio.h>
 #include <webkit2/webkit2.h>
@@ -234,7 +234,7 @@ client_new(const gchar *uri, WebKitWebView *related_wv, gboolean show,
                      G_CALLBACK(key_tablabel), c);
 
     /* For easy access, store a reference to our label. */
-    g_object_set_data(G_OBJECT(evbox), "lariza-tab-label", c->tablabel);
+    g_object_set_data(G_OBJECT(evbox), "cgull-tab-label", c->tablabel);
 
     /* This only shows the event box and the label inside, nothing else.
      * Needed because the evbox/label is "internal" to the notebook and
@@ -476,13 +476,17 @@ changed_uri(GObject *obj, GParamSpec *pspec, gpointer data)
 gboolean
 crashed_web_view(WebKitWebView *web_view, gpointer data)
 {
-    gchar *t;
-    struct Client *c = (struct Client *)data;
+    //gchar *t;
+    //struct Client *c = (struct Client *)data;
 
-    t = g_strdup_printf("WEB PROCESS CRASHED: %s",
-                        webkit_web_view_get_uri(WEBKIT_WEB_VIEW(web_view)));
-    gtk_entry_set_text(GTK_ENTRY(c->location), t);
-    g_free(t);
+    //t = g_strdup_printf("WEB PROCESS CRASHED: %s", webkit_web_view_get_uri(WEBKIT_WEB_VIEW(web_view)));
+    notify_notification_show(
+	    notify_notification_new(__NAME__,
+	    g_strdup_printf("Web Process Crashed\r%s",
+		webkit_web_view_get_uri(WEBKIT_WEB_VIEW(web_view))), icon), NULL);
+
+    //gtk_entry_set_text(GTK_ENTRY(c->location), t);
+    //g_free(t);
 
     return TRUE;
 }
@@ -580,9 +584,11 @@ download_handle(WebKitDownload *download, gchar *suggested_filename, gpointer da
     }
 
 
-    notify_notification_update(download_notif, __NAME__,
-	    g_strdup_printf("Downloading %s.%d", sug_clean, suffix), icon);
-    notify_notification_show(download_notif, NULL);
+    //notify_notification_update(download_notif, __NAME__,
+	    //g_strdup_printf("Downloading %s.%d", sug_clean, suffix), icon);
+    //notify_notification_show(download_notif, NULL);
+    notify_notification_show(notify_notification_new(__NAME__,
+		g_strdup_printf("Downloading %s.%d", sug_clean, suffix), icon),NULL);
 
     g_free(sug_clean);
     g_free(path);
@@ -1214,7 +1220,7 @@ mainwindow_title(gint idx)
         return;
 
     widg = gtk_notebook_get_tab_label(GTK_NOTEBOOK(mw.notebook), child);
-    tablabel = (GtkWidget *)g_object_get_data(G_OBJECT(widg), "lariza-tab-label");
+    tablabel = (GtkWidget *)g_object_get_data(G_OBJECT(widg), "cgull-tab-label");
     text = gtk_label_get_text(GTK_LABEL(tablabel));
     gtk_window_set_title(GTK_WINDOW(mw.win), text);
 }
