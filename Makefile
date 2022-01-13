@@ -48,7 +48,7 @@ install: all installdirs
 	$(INSTALL_DATA) $(__NAME__).desktop\
 	    $(DESTDIR)$(appdir)/$(__NAME__).desktop
 	$(INSTALL_DATA) $(__NAME__).svg\
-	    $(DESTDIR)$(logodir)/$(__NAME__).desktop
+	    $(DESTDIR)$(logodir)/$(__NAME__).svg
 
 installdirs:
 	mkdir -p $(DESTDIR)$(bindir) $(DESTDIR)$(man1dir) \

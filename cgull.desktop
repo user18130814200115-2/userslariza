@@ -1,5 +1,8 @@
 [Desktop Entry]
 Type=Application
-Exec=cgull
+Exec=cgull %u
 Terminal=false
+Icon=/usr/share/icons/hicolor/48x48/apps/cgull.svg
 Name=CGull
+GenericName="Web Browser"
+
