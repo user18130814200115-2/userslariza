@@ -13,7 +13,7 @@
 #include <webkit2/webkit2.h>
 #include <JavaScriptCore/JavaScript.h>
 
-#include<libnotify/notify.h>
+#include <libnotify/notify.h>
 
 NotifyNotification *download_notif;
 NotifyNotification *javascript_notif;
@@ -240,7 +240,6 @@ client_new(const gchar *uri, WebKitWebView *related_wv, gboolean show,
      * Needed because the evbox/label is "internal" to the notebook and
      * not part of the normal "widget tree" (IIUC). */
     gtk_widget_show_all(evbox);
-    //webkit_settings_set_enable_javascript(webkit_web_view_get_settings(WEBKIT_WEB_VIEW(c->web_view)), FALSE);
 	
     gtk_notebook_insert_page(GTK_NOTEBOOK(mw.notebook), c->vbox, evbox,
                              gtk_notebook_get_current_page(GTK_NOTEBOOK(mw.notebook)) + 1);
@@ -534,7 +533,7 @@ download_handle_start(WebKitWebView *web_view, WebKitDownload *download,
 gboolean
 download_handle(WebKitDownload *download, gchar *suggested_filename, gpointer data)
 {
-    gchar *sug_clean, *path, *path2 = NULL, *uri;
+    gchar *sug_clean, *path, *path2 = NULL, *uri, *name;
     GtkToolItem *tb;
     int suffix = 1;
     size_t i;
@@ -546,10 +545,12 @@ download_handle(WebKitDownload *download, gchar *suggested_filename, gpointer da
 
     path = g_build_filename(download_dir, sug_clean, NULL);
     path2 = g_strdup(path);
+    name = g_strdup_printf("%s", sug_clean);
+
     while (g_file_test(path2, G_FILE_TEST_EXISTS) && suffix < 1000)
     {
         g_free(path2);
-
+	name = g_strdup_printf("%s.%d", sug_clean, suffix);
         path2 = g_strdup_printf("%s.%d", path, suffix);
         suffix++;
     }
@@ -563,6 +564,9 @@ download_handle(WebKitDownload *download, gchar *suggested_filename, gpointer da
     {
         uri = g_filename_to_uri(path2, NULL, NULL);
         webkit_download_set_destination(download, uri);
+	notify_notification_show(notify_notification_new(
+		g_strdup_printf("%s - Downloading", __NAME__),
+		g_strdup_printf("%s", name), icon),NULL);
         g_free(uri);
 
         tb = gtk_tool_button_new(NULL, NULL);
@@ -583,12 +587,6 @@ download_handle(WebKitDownload *download, gchar *suggested_filename, gpointer da
                          G_CALLBACK(downloadmanager_cancel), download);
     }
 
-
-    //notify_notification_update(download_notif, __NAME__,
-	    //g_strdup_printf("Downloading %s.%d", sug_clean, suffix), icon);
-    //notify_notification_show(download_notif, NULL);
-    notify_notification_show(notify_notification_new(__NAME__,
-		g_strdup_printf("Downloading %s.%d", sug_clean, suffix), icon),NULL);
 
     g_free(sug_clean);
     g_free(path);
