@@ -13,8 +13,9 @@ a simple webkit GTK3 browser.
 - Certificate trust store
 - Bundled user-supplied JavaScripts (optional):
     - Link hints
+    - Reader mode
 - Bundled web extensions (optional):
-- Adblock
+    - Adblock
 - Keybindings toggle javascript
 - Keybinding to manage history and bookmarks with external program
 - Open the curent link with an external program
