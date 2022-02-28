@@ -45,6 +45,8 @@ install: all installdirs
 		$(DESTDIR)$(libdir)/$(__NAME__)/web_extensions/we_adblock.so
 	$(INSTALL_DATA) user-scripts/hints.js \
 		$(DESTDIR)$(datadir)/$(__NAME__)/user-scripts/hints.js
+	$(INSTALL_DATA) user-scripts/reader.js \
+		$(DESTDIR)$(datadir)/$(__NAME__)/user-scripts/reader.js
 	$(INSTALL_DATA) $(__NAME__).desktop\
 	    $(DESTDIR)$(appdir)/$(__NAME__).desktop
 	$(INSTALL_DATA) $(__NAME__).svg\
