@@ -2278,7 +2278,7 @@ if (typeof module === "object") {
 
 // Added for Cgull
 // Just a bit of css for better reading
-css = '<style>body{max-width:42em;width:90%;margin:auto;text-align:justify;color:#333}img{max-width:40em;width:90%}figure(text-align:center)</style>'
+css = '<style>body{max-width:42em;width:90%;margin:auto;text-align:justify;color:#333}img{max-width:40em;width:100%}figure(text-align:center)</style>'
 document.onkeypress = function(e) {
     var documentClone = document.cloneNode(true);
     if (e.ctrlKey && e.keyCode == 101) {
