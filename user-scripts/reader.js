@@ -125,7 +125,7 @@ Readability.prototype = {
     okMaybeItsACandidate: /and|article|body|column|content|main|shadow/i,
 
     positive: /article|body|content|entry|hentry|h-entry|main|page|pagination|post|text|blog|story/i,
-    negative: /-ad-|hidden|^hid$| hid$| hid |^hid |banner|combx|comment|com-|contact|foot|footer|footnote|gdpr|masthead|media|meta|outbrain|promo|related|scroll|share|shoutbox|sidebar|skyscraper|sponsor|shopping|tags|tool|widget/i,
+    negative: /nav|-ad-|hidden|^hid$| hid$| hid |^hid |banner|combx|comment|com-|contact|foot|footer|footnote|gdpr|masthead|media|meta|outbrain|promo|related|scroll|share|shoutbox|sidebar|skyscraper|sponsor|shopping|tags|tool|widget/i,
     extraneous: /print|archive|comment|discuss|e[\-]?mail|share|reply|all|login|sign|single|utility/i,
     byline: /byline|author|dateline|writtenby|p-author/i,
     replaceFonts: /<(\/?)font[^>]*>/gi,
@@ -2278,7 +2278,7 @@ if (typeof module === "object") {
 
 // Added for Cgull
 // Just a bit of css for better reading
-css = '<style>body{max-width:42em;width:90%;margin:auto;text-align:justify;color:#333}img{max-width:40em;width:100%}figure(text-align:center)</style>'
+css = '<style>body{max-width:42em;width:90%;margin:auto;text-align:justify;color:#333}img{max-width:100%}</style>'
 document.onkeypress = function(e) {
     var documentClone = document.cloneNode(true);
     if (e.ctrlKey && e.keyCode == 101) {
