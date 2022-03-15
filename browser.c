@@ -16,7 +16,8 @@
 #include <libnotify/notify.h>
 
 NotifyNotification *download_notif;
-NotifyNotification *javascript_notif;
+gboolean javascript = true;
+gboolean fullscreened = false;
 
 void client_destroy(GtkWidget *, gpointer);
 WebKitWebView *client_new(const gchar *, WebKitWebView *, gboolean,
@@ -643,7 +644,6 @@ downloadmanager_setup(void)
 
     notify_init(__NAME__);
     download_notif = notify_notification_new(__NAME__, NULL, NULL);
-    javascript_notif = notify_notification_new(__NAME__, NULL, NULL);
 
 }
 
@@ -937,18 +937,33 @@ key_common(GtkWidget *widget, GdkEvent *event, gpointer data)
                     search(c, 1);
                     return TRUE;
 		case GDK_KEY_j:
-		    webkit_settings_set_enable_javascript(webkit_web_view_get_settings(WEBKIT_WEB_VIEW(c->web_view)), FALSE);
+		    if (javascript) {
+			webkit_settings_set_enable_javascript(
+				webkit_web_view_get_settings(
+				    WEBKIT_WEB_VIEW(c->web_view)), FALSE);
+			javascript = FALSE;
+			gtk_entry_set_icon_from_icon_name(GTK_ENTRY(c->location),
+                            GTK_ENTRY_ICON_SECONDARY, "action-unavailable-symbolic.");
+		    } else {
+			webkit_settings_set_enable_javascript(
+				webkit_web_view_get_settings(
+				    WEBKIT_WEB_VIEW(c->web_view)), TRUE);
+			javascript = TRUE;
+			gtk_entry_set_icon_from_icon_name(GTK_ENTRY(c->location),
+                            GTK_ENTRY_ICON_SECONDARY, NULL);
+		    }
 		    webkit_web_view_reload_bypass_cache(WEBKIT_WEB_VIEW(c->web_view));
-		    notify_notification_update(javascript_notif, __NAME__,
-			"javascript disabled", icon);
-		    notify_notification_show(javascript_notif, NULL);
 		    return TRUE;
-		case GDK_KEY_J:
-		    webkit_settings_set_enable_javascript(webkit_web_view_get_settings(WEBKIT_WEB_VIEW(c->web_view)), TRUE);
-		    webkit_web_view_reload_bypass_cache(WEBKIT_WEB_VIEW(c->web_view));
-		    notify_notification_update(javascript_notif, __NAME__,
-			"javascript enabled", icon);
-		    notify_notification_show(javascript_notif, NULL);
+		case GDK_KEY_z:
+		    if (fullscreened) {
+			gtk_widget_show(c->location);
+			gtk_notebook_set_show_tabs(GTK_NOTEBOOK(mw.notebook), true);
+			fullscreened = FALSE;
+		    } else {
+			gtk_widget_hide(c->location);
+			gtk_notebook_set_show_tabs(GTK_NOTEBOOK(mw.notebook), false);
+			fullscreened = TRUE;
+		    }
 		    return TRUE;
 		case GDK_KEY_b:
 		    system("cgullbookmarks &"); 
