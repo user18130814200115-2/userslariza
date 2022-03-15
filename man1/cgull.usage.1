@@ -44,10 +44,10 @@ Search forward.
 Search backward.
 .TP
 \fBctrl\fP + \fBj\fP
-Disable javascript for the current tab and reload the page.
+Toggle javascript for the current tab and reload the page.
 .TP
-\fBctrl\fP + \fBm\fP
-Enable javascript for the current tab and reload the page.
+\fBctrl\fP + \fBz\fP
+Toggle the visibility of the tab-, and uri-areas.
 .TP
 \fBctrl\fP + \fBo\fP
 Reload trusted certificates.
@@ -148,6 +148,12 @@ $\fBCGULL_ENABLE_CONSOLE_TO_STDOUT\fP enabled.
 Press \fBf\fP (open link in current window) or \fBF\fP (open in new
 window) to activate link hints. After typing the characters for one of
 them, press \fBEnter\fP to confirm. Press \fBEscape\fP to abort.
+.P
+.TP
+\fBreader.js\fP
+Press \fBctrl+e\fP to activate reader mode this will remove most
+images, ads and sidebars to allow for easier, distraction-free reading.
+Reader mode can only be reversed by reloading the page.
 .P
 Those bundled scripts are automatically installed on \fBmake install\fP.
 To use them, though, make sure to link them to the directory mentioned
