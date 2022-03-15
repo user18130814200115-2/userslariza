@@ -16,14 +16,15 @@ a simple webkit GTK3 browser.
     - Reader mode
 - Bundled web extensions (optional):
     - Adblock
-- Keybindings toggle javascript
+- Keybinding to toggle javascript
+- Keybinding to hide the uri-, and tab-areas
 - Keybinding to manage history and bookmarks with external program
-- Open the curent link with an external program
+    - Open the current link with an external program
 - A cgull.desktop file is automatically installed on `make install`
 - Dedicated keys to get to a certain tab on (ctrl+`n`) where `n` is a number key
 - Search CGULL_SEARCH_URI if the url input does not start with a protocol and the string does not contain a `.`
 - Default to `https` over `http`
-- Desktop notifications for download- and javascript-status
+- Desktop notifications for download status
 - Disable GTK window decorations.
     - This is temporary until [#2191](https://gitlab.gnome.org/GNOME/gtk/-/merge_requests/2191) is merged.
 
