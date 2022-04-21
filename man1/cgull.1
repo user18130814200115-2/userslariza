@@ -46,6 +46,10 @@ This variable defaults to \fB/var/tmp\fP.
 \fBCGULL_ENABLE_CONSOLE_TO_STDOUT\fP
 Enable writing WebKit console messages to stdout.
 .TP
+.TP
+\fBCGULL_ENABLE_SMOOTH_SCROLLING\fP
+Enable smooth scrolling.
+.TP
 \fBCGULL_FIFO_SUFFIX\fP
 Cooperative instances are implemented using a named pipe in the file
 system. The name of this pipe usually is (at least on modern systems
@@ -96,8 +100,14 @@ Adblock patterns. See \fBcgull.usage\fP(1).
 Directory where trusted certificates are stored. See
 \fBcgull.usage\fP(1).
 .TP
-\fI~/.config\:/cgull\:/scripts\fP
-Directory to store user-supplied JavaScript snippets. See
+\fI~/.config\:/cgull\:/usr-scripts\fP
+Directory to store user-supplied JavaScript snippets that run on every page.
+See
+\fBcgull.usage\fP(1).
+.TP
+\fI~/.config\:/cgull\:/usr-scripts\fP
+Directory to store user-supplied JavaScript snippets that may be called on in
+the keymap configuration. See
 \fBcgull.usage\fP(1).
 .TP
 \fI~/.local\:/share\:/cgull\:/web_extensions\fP

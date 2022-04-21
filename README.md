@@ -28,7 +28,7 @@ a simple webkit GTK3 browser.
 - Disable GTK window decorations.
     - This is temporary until [#2191](https://gitlab.gnome.org/GNOME/gtk/-/merge_requests/2191) is merged.
 
-See manpage for all features, variables and external program usuage
+See manpage for all features, variables and external program usage.
 
 ## Examples of external program use
 Example scripts can be found under `user-scripts/`.

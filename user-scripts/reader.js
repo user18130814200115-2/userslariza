@@ -2279,10 +2279,10 @@ if (typeof module === "object") {
 // Added for Cgull
 // Just a bit of css for better reading
 css = '<style>body{max-width:42em;width:90%;margin:auto;text-align:justify;color:#333}img{max-width:100%}</style>'
-document.onkeypress = function(e) {
+//document.onkeypress = function(e) {
     var documentClone = document.cloneNode(true);
-    if (e.ctrlKey && e.keyCode == 101) {
+    //if (e.ctrlKey && e.keyCode == 101) {
 	let article = new Readability(documentClone).parse();
 	document.documentElement.innerHTML = css + '<h1>' + article.title + '</h1>' + article.content;
-    }
-}
+    //}
+//}

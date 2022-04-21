@@ -138,22 +138,27 @@ After a page has been successfully loaded, the directory
 \fI~/.config\:/cgull\:/user-scripts\fP will be scanned and each file in
 it ending with \fB.js\fP will be run as a JavaScript file in the context
 of said page.
+The folder \fI~/.config\:/cgull\:/user-toggle-scripts\fP is not scanned
+automatically and files there do not run on every file.
+Instead, files in this folder can be called upon by cgull for instance in
+the keymap configuration.
 .P
 During development, you will most likely want to run \fBcgull\fP with
 $\fBCGULL_ENABLE_CONSOLE_TO_STDOUT\fP enabled.
 .P
 \fBcgull\fP comes with the following scripts:
 .TP
-\fBhints.js\fP
+\fBhints.js (normal)\fP
 Press \fBf\fP (open link in current window) or \fBF\fP (open in new
 window) to activate link hints. After typing the characters for one of
 them, press \fBEnter\fP to confirm. Press \fBEscape\fP to abort.
 .P
 .TP
-\fBreader.js\fP
-Press \fBctrl+e\fP to activate reader mode this will remove most
+\fBreader.js (toggle)\fP
+Mapped to \fBctrl+shift+e\fP. Activates reader mode, this will remove most
 images, ads and sidebars to allow for easier, distraction-free reading.
 Reader mode can only be reversed by reloading the page.
+The \fBreader.js\fP comes from mozilla's \fBreadability.js\fP project.
 .P
 Those bundled scripts are automatically installed on \fBmake install\fP.
 To use them, though, make sure to link them to the directory mentioned

@@ -46,16 +46,19 @@ install: all installdirs
 	$(INSTALL_DATA) user-scripts/hints.js \
 		$(DESTDIR)$(datadir)/$(__NAME__)/user-scripts/hints.js
 	$(INSTALL_DATA) user-scripts/reader.js \
-		$(DESTDIR)$(datadir)/$(__NAME__)/user-scripts/reader.js
+		$(DESTDIR)$(datadir)/$(__NAME__)/user-toggle-scripts/reader.js
 	$(INSTALL_DATA) $(__NAME__).desktop\
 	    $(DESTDIR)$(appdir)/$(__NAME__).desktop
 	$(INSTALL_DATA) $(__NAME__).svg\
 	    $(DESTDIR)$(logodir)/$(__NAME__).svg
+	$(INSTALL_DATA) $(__NAME__)_white.svg\
+	    $(DESTDIR)$(logodir)/$(__NAME__)_white.svg
 
 installdirs:
 	mkdir -p $(DESTDIR)$(bindir) $(DESTDIR)$(man1dir) \
 		$(DESTDIR)$(libdir)/$(__NAME__)/web_extensions \
 		$(DESTDIR)$(datadir)/$(__NAME__)/user-scripts \
+		$(DESTDIR)$(datadir)/$(__NAME__)/user-toggle-scripts \
 		$(DESTDIR)$(appdir)
 
 
