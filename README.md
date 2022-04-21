@@ -1,14 +1,21 @@
-# Cgull browser
-This is a fork of the [lariza browser](https://uninformativ.de/git/lariza),
-a simple webkit GTK3 browser.
+<p align="center">
+    <img width="200" src="cgull.svg" alt="Material Bread logo" align="center">
+</p>
+<h1 align="center">Cgull browser</h1>
+<p align="center">
+    Cgull is a simple webkit2gtk browser which focuses on simplicity and extensibility.
+    <br>
+    Cgull supports tabs, interaction with external programs (more accurately shell scripts) as well as JavaScript-,
+    and Webkit-based extensions.
+</p><p align="center">
+    The project is originally forked from the <a href="https://uninformativ.de/git/lariza">lariza browser</a>.
+</p>
 
-## Regular features
-- A WebKit2 viewport
-- An input box to change the URI or to search the current page
+## Features
+- Multi functional input box for websearch, url's and page search.
 - Built-in download manager
-- Indicator for web feeds
+- Indicator for web feeds and JavaScript
 - Global content zoom
-- Keybindings for zooming in, out and resetting zoom
 - Cooperative instances using FIFOs
 - Certificate trust store
 - Bundled user-supplied JavaScripts (optional):
@@ -16,37 +23,41 @@ a simple webkit GTK3 browser.
     - Reader mode
 - Bundled web extensions (optional):
     - Adblock
-- Keybinding to toggle javascript
-- Keybinding to hide the uri-, and tab-areas
-- Keybinding to manage history and bookmarks with external program
-    - Open the current link with an external program
-- A cgull.desktop file is automatically installed on `make install`
-- Dedicated keys to get to a certain tab on (ctrl+`n`) where `n` is a number key
-- Search CGULL_SEARCH_URI if the url input does not start with a protocol and the string does not contain a `.`
-- Default to `https` over `http`
-- Desktop notifications for download status
-- Disable GTK window decorations.
-    - This is temporary until [#2191](https://gitlab.gnome.org/GNOME/gtk/-/merge_requests/2191) is merged.
+- Integration with external programs for:
+    - history
+    - bookmarks
+    - native viewers (pdf, mp4, etc.)
+- Keybindings for nearly every action
+- HTTPS by default
+- Manpage documentation
 
-See manpage for all features, variables and external program usage.
+Cgull does not have a config file, changes can be made by editing the source code and a few variables are read from the environment.
+
+See the manpages for all features, variables and external program usage.
 
 ## Examples of external program use
-Example scripts can be found under `user-scripts/`.
+Cgull uses a script called `cgullexternalhandler` which may be written in any language and is passed the current 
+uri when called.
 
-To explain the power of the external handler script,
-here are some of the programs I have in there:
+To explain the power of the external handler script, you can look at the example provided `user-scripts/`.
+The script in that folder opens a dmenu-like selection menu with options to:
 
-- mpv
+- Open Link in mpv
   - for opening YouTube videos in a local player
-- one time password
+- Get and type a TOTP
   -  Looks at the url and fetches the appropriate OTP code from pass, then types it out.
-- bookmark
+- Add a Bookmark
   - add the current url to the bookmarks file
-- tuir
+- Open link in reddit viewer
   - open the current page in a terminal window running tuir (for reddit pages)
-- pdf format
-  - Formats the current page into a nicely readable pdf similar to Firefox's reader mode
+- Format page as pdf
+  - Formats the current page into a nicely readable pdf
 
+You can of course also forgo the selection menu and simply write a script like:
+```
+firefox "$1"
+```
+To open the provided link in firefox.
 
 ## Installation
 The following C libraries are required:
