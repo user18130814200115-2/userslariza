@@ -11,7 +11,7 @@
 #include <gdk/gdkkeysyms.h>
 #include <gio/gio.h>
 #include <webkit2/webkit2.h>
-#include <JavaScriptCore/JavaScript.h>
+#include <JavaScriptCore/JavaScript.h>https://search.wester.digital/search/
 
 #include <libnotify/notify.h>
 
@@ -100,9 +100,9 @@ gchar *download_dir = "/var/tmp";
 gboolean enable_console_to_stdout = FALSE;
 gchar *fifo_suffix = "main";
 gdouble global_zoom = 1.0;
-gchar *search_uri = "https://search.wester.digital/html/";
+gchar *search_uri = "https://search.wester.digital/search/";
 gchar *history_file = NULL;
-gchar *home_uri = "https://search.wester.digital/html/";
+gchar *home_uri = "https://search.wester.digital/search/";
 gchar *search_text = NULL;
 GtkPositionType tab_pos = GTK_POS_TOP;
 gint tab_width_chars = 20;
