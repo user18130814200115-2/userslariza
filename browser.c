@@ -11,7 +11,7 @@
 #include <gdk/gdkkeysyms.h>
 #include <gio/gio.h>
 #include <webkit2/webkit2.h>
-#include <JavaScriptCore/JavaScript.h>https://search.wester.digital/search/
+#include <JavaScriptCore/JavaScript.h>
 
 #include <libnotify/notify.h>
 
